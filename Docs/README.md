@@ -1,4 +1,5 @@
-<h1>Installation instruction links goes here</h1>
+# Installation instruction links goes here
+
 
 <ul>
     <li>Link to windows instructions</li>
