@@ -12,7 +12,7 @@ You can run the following command on command prompt to see which versions are in
 
 > dotnet --info
 
-<h1>Standalone Application</h1>
+<h2>Standalone Application</h2>
 
 This is the easiest way to run BuggyAmb if you don't want to install / use IIS. However in this case you will need to manage the process startup. Also note that the BuggyAmb application is "buggy" and it will most probably crash due to different reasons. Although this is one of the purposes of this application (investigating crash problems), you may need to start your application once again after it crashes. If you want to automate process management then go with hosting on IIS instructions.
 
@@ -30,3 +30,9 @@ As an alternative, you can run as a standalone by just running <code>BuggyAmb.ex
 
 If you need to configure HTTPS or run on another port then you can download the source code and  make the necessary changes based on your needs easily. 
 
+<h2>Hosting on IIS</h2>
+
+Hosting on IIS is easy and I would choose this option over running a standalone applicaiton. This is because:
+
+* IIS will manage the process startup: WAS service will restart the process once it crashes unless the application crashes frequently and the pool is disabled due to Rapid Fail Protection.
+* Hosting on IIS is usually the preferred way for hosting ASP.NET Core appliations on Windows so this is closer to the real world scenarios.
