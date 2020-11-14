@@ -14,7 +14,7 @@ You can run the following command on command prompt to see which versions are in
 
 <h1>Standalone Application</h1>
 
-This is the easiest way to run BuggyAmb if you don't want to install / use IIS. However in this case you will need to manage the process startup. Also note that the BuggyAmb application is "buggy" and it will most probably crash due to different reasons. Although this is one of the purposes of this application (investigating crash problems) but you may need to start your application once again after it crashes.
+This is the easiest way to run BuggyAmb if you don't want to install / use IIS. However in this case you will need to manage the process startup. Also note that the BuggyAmb application is "buggy" and it will most probably crash due to different reasons. Although this is one of the purposes of this application (investigating crash problems), you may need to start your application once again after it crashes.
 
 If you want to automate process management then go with hosting on IIS instructions.
 
