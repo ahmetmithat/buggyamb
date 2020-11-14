@@ -21,8 +21,8 @@ If you want to automate process management then go with hosting on IIS instructi
 * Download the latest release here: https://github.com/ahmetmithat/buggyamb/releases/
 * Extract it to a folder.
 * Open a command prompt and change directory to the installation folder.
-* You can run the BuggyAmb application by running <code>dotnet BuggyAmb</code> command. BuggyAmb application will run on Kestrel and listen HTTP requests on port 5000:<br/><br/>![Running Standalone](Images/standalone.png)<br/>
-* In this case BuggyAmb application will run in a dotnet.exe process:<br/><br/>![Tasklist](Images/tasklist.png)<br/>
+* You can run the BuggyAmb application by running <code>dotnet BuggyAmb</code> command. BuggyAmb application will run on Kestrel and listen HTTP requests on port 5000:<br/><br/>![Running Standalone](Images/standalone.png)<br/><br/>
+* In this case BuggyAmb application will run in a dotnet.exe process:<br/><br/>![Tasklist](Images/tasklist.png)<br/><br/>
 	
 You will need to find the PID on your environment like above to investigate the correct process.
 
