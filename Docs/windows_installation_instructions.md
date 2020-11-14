@@ -44,10 +44,12 @@ If you need to configure HTTPS or run on another port then you can download the 
 
 <h3>Hosting on Internet Information Services (IIS)</h3>
 
-Hosting on IIS is easy and I would choose this option over running a standalone applicaiton. This is because:
+Hosting on IIS is easy and I would choose this option over running as a standalone application. This is because:
 
 * IIS will manage the process startup: WAS service will restart the process once it crashes unless the application crashes frequently and the pool is disabled due to Rapid Fail Protection.
 * Hosting on IIS is usually the preferred way for hosting ASP.NET Core appliations on Windows so this is closer to the real world scenarios. So you would see symptoms that applies to more real scenarios while doing troubleshooting.
+
+<h4>Installing IIS</h4>
 
 IIS is part of the Windows operating system and it can be installed at Control Panel\Programs\Programs and Features window by clicking "Turn Windows features on or off" on client Windows operating systems such as Windows 10. Default installation of IIS should be enough for hosting ASP.NET Core applications:br/> 
 
@@ -57,3 +59,4 @@ If you are on a server SKU, such as Windows Server 2019, you can install the IIS
 
 After installation is completed you should be able to see the welcome page of IIS when you browse http://localhost/. If you don't get it, then something should be wrong.
 
+<h4>Creating BuggyAmb web site on IIS</h4>
