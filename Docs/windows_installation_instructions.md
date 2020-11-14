@@ -22,11 +22,24 @@ Once again, please install IIS Hosting Bundle if you are going to host BuggyAmb 
 
 <h2>How to run BuggyAmb</h2>
 
-You can run BuggyAmb as a standalone application or you can host it on IIS. 
+The first release of BuggyAmb runs over HTTP. If you need to configure HTTPS or run on another port then you can download the source code and make the necessary changes based on your needs. 
 
-<h3>Running as standalone application (no web server is needed)</h3>
+You can run BuggyAmb as a standalone application or you can host it on IIS.
 
-This is the easiest way to run BuggyAmb if you don't want to install IIS. However in this case you will need to manage the process startup. Also note that the BuggyAmb application is "buggy" and it will most probably crash due to different reasons. Although this is one of the purposes of this application (investigating crash problems), you may need to start your application once again after it crashes. If you want to automate process management then go with hosting on IIS instructions.
+I personally prefer to host it on IIS but it really does not matter where and how you host it (you can even host it on Linux or macOS). This is true because you just need a process that you can investigate - it is not important if the process running the application is dotnet.exe or w3wp.exe.
+
+There are advantages and disadvantages of both, e.g.:
+
+* Running as stand alone application is very easy. You do not need to deal with installing IIS and creating a web site.
+* When you run as stand alone, you will need to manage to start BuggyAmb once it stops / crashes.
+* Hosting on IIS is usually the preferred way for several people in real world scenarios where the OS is Windows so you will be seeing more real-world examples when troubleshooting BuggyAmb.
+* IIS (actually the WAS service) will manage the process startups so if BuggyAmb crashes then IIS will start it without you to take action (unless the application is pool is disabled due to Rapid Fail Protection).
+
+So make your choice, it is all up to you.
+
+<h3>Running BuggyAmb as a standalone application (no web server is needed)</h3>
+
+This is the easiest way to run BuggyAmb if you don't want to install IIS. 
 
 Here are the instructions to run BuggyAmb as a standalone application:
 
@@ -40,14 +53,9 @@ You will need to find the PID on your environment like above to investigate the 
 
 As an alternative, you can run as a standalone by just running <code>BuggyAmb.exe</code> on command prompt. If you run that way then the BuggyAmb will run in (surprise surprise) BuggyAmb.exe process and you would need to investigate that process.
 
-If you need to configure HTTPS or run on another port then you can download the source code and  make the necessary changes based on your needs easily. 
-
 <h3>Hosting on Internet Information Services (IIS)</h3>
 
-Hosting on IIS is easy and I would choose this option over running as a standalone application. This is because:
-
-* IIS will manage the process startup: WAS service will restart the process once it crashes unless the application crashes frequently and the pool is disabled due to Rapid Fail Protection.
-* Hosting on IIS is usually the preferred way for hosting ASP.NET Core appliations on Windows so this is closer to the real world scenarios. So you would see symptoms that applies to more real scenarios while doing troubleshooting.
+Hosting on IIS is also easy and I prefer this option over running as a standalone application.
 
 <h4>Installing IIS</h4>
 
@@ -77,7 +85,8 @@ If you want to use the default port 80 to avoid putting the port number when mak
 
 ![IIS create a web site with host name](Images/IIS_create_website_with_hostname.png)
 
-In the case above, the requests made via http://buggyamb/ will be routed this web site. Of course, buggyamb name should resolve the IP address of your machine and you can easily do so by editing the <code>hosts</code> file under <code>C:\Windows\System32\drivers\etc</code> folder:
+In the case above, the requests made via http://buggyamb/ will be routed to this web site. Of course, buggyamb name should resolve the IP address of your machine and you can easily do so by editing the <code>hosts</code> file under <code>C:\Windows\System32\drivers\etc</code> folder:
 
 ![IIS create a web site with host name](Images/windows_hosts_file.png)
 
+After clicking OK and creating the web site, you should be ready for testing the application.
