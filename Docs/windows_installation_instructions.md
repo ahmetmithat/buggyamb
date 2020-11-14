@@ -26,5 +26,7 @@ Here are the instructions to run BuggyAmb as a standalone application:
 	
 You will need to find the PID on your environment like above to investigate the correct process.
 
-As an alternative, you can run as a standalone by just running <code>BuggyAmb.exe</code> on command prompt. If you run that way then the BuggyAmb will run in (surprise surprise) BuggyAmb.exe process.
+As an alternative, you can run as a standalone by just running <code>BuggyAmb.exe</code> on command prompt. If you run that way then the BuggyAmb will run in (surprise surprise) BuggyAmb.exe process and you would need to investigate that process.
+
+If you need to configure HTTPS or run on another port then you can download the source code and  make the necessary changes based on your needs easily. 
 
