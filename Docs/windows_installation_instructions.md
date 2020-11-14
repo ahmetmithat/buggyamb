@@ -88,9 +88,7 @@ Here are the instructions:
 
 ![IIS create a web site](Images/IIS_create_website.png)
 
-In the sample screenshot above, I am creating the "BuggyAmb" web site which uses an application pool with the same name.
-
-The key part above is the port number: 88. This web site will listen on port 88 for the incoming requests and you will browse the BuggyAmb site by browsing http://localhost:88.
+In the sample screenshot above, I create the "BuggyAmb" web site which uses an application pool with the same name. The key part above is the port number: 88. This web site will listen on port 88 for the incoming requests and you will browse http://localhost:88 to access the BuggyAmb application.
 
 If you want to use the default port 80 to avoid putting the port number when making requests, then you can stop the "Default Web Site" which is created when IIS is installed. If you are familiar with IIS configuration then you can keep the Default Web Site running and use a <code>hostname</code> when creating the BuggyAmb site, for example:
 
