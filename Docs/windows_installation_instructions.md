@@ -1,6 +1,6 @@
 <h1>Windows Installation Instructions</h1>
 
-<h2>.NET Core version<h2>
+<h2>.NET Core version</h2>
 
 BuggyAmb is an ASP.NET Core framework-dependent application so it means that the correct version of ASP.NET Core runtime (or IIS Hosting Bundle) should be installed on your machine.
 
