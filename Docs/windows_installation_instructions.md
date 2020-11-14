@@ -102,7 +102,7 @@ After clicking OK and creating the web site, you should see the web site created
 
 ![IIS BuggyAmb web site](Images/IIS_buggyamb_website.png)
 
-Once you create the web site you can test it by either cliking "browse link" in IIS or open a browser and test accessing to http://buggyamb. You should see the following web site:
+Once you create the web site you can test it by either cliking "Browse Website" link in IIS manager or opening a browser and browsing to http://buggyamb. You should see the following:
 
 ![Browser test when it runs as standalone](Images/browser_test_iis.png)
 
