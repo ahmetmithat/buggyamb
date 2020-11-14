@@ -60,3 +60,24 @@ If you are on a server SKU, such as Windows Server 2019, you can install the IIS
 After installation is completed you should be able to see the welcome page of IIS when you browse http://localhost/. If you don't get it, then something should be wrong.
 
 <h4>Creating BuggyAmb web site on IIS</h4>
+
+Here are the instructions:
+
+* Download the latest release here: https://github.com/ahmetmithat/buggyamb/releases/
+* Extract it to c:\inetpub\BuggyAmb folder.
+* Open IIS manager, right click on Sites and choose Add Website to create a new site. You can use similar settings as seen below:
+
+![IIS create a web site](Images/IIS_create_website.png)
+
+In the sample screenshot above, I am creating the "BuggyAmb" web site which uses an application pool with the same name.
+
+The key part above is the port number: 88. This web site will listen on port 88 for the incoming requests and you will browse the BuggyAmb site by browsing http://localhost:88.
+
+If you want to use the default port 80 to avoid putting the port number when making requests, then you can stop the "Default Web Site" which is created when IIS is installed. If you are familiar with IIS configuration then you can keep the Default Web Site running and use a <code>host name</code> when creating the BuggyAmb site, for example:
+
+![IIS create a web site with host name](Images/IIS_create_website_with_hostname.png)
+
+In the case above, the requests made via http://buggyamb/ will be routed this web site. Of course, buggyamb name should resolve the IP address of your machine and you can easily do so by editing the <code>hosts</code> file under <code>C:\Windows\System32\drivers\etc</code> folder:
+
+![IIS create a web site with host name](Images/windows_hosts_file.png)
+
