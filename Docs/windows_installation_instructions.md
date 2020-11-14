@@ -99,4 +99,4 @@ Once you create the web site you can test it by either cliking "browse link" in 
 
 ![Browser test when it runs as standalone](Images/browser_test_iis.png)
 
-Note that if you did not configure hostname then you will access to the BuggyAmb web site via http://localhost:88 or http://localhost if you stop the Default Web Site.
+Note that if you do not configure hostname then you will access to the BuggyAmb web site via http://localhost:88 if you port 88 for web site, or via http://localhost if you stop the Default Web Site and configure BuggyAmb with port 80.
