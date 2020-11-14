@@ -22,7 +22,7 @@ Once again, please install IIS Hosting Bundle if you are going to host BuggyAmb 
 
 <h2>How to run BuggyAmb</h2>
 
-The first release of BuggyAmb runs over HTTP. If you need to configure HTTPS or run on another port then you can download the source code and make the necessary changes based on your needs. 
+The first release of BuggyAmb runs over HTTP. If you need to configure it to run on HTTPS then you can download the source code and make the necessary changes based on your needs. 
 
 You can run BuggyAmb as a standalone application or you can host it on IIS.
 
@@ -46,12 +46,14 @@ Here are the instructions to run BuggyAmb as a standalone application:
 * Download the latest release here: https://github.com/ahmetmithat/buggyamb/releases/
 * Extract it to a folder.
 * Open a command prompt and change directory to the installation folder.
-* You can run the BuggyAmb application by running <code>dotnet BuggyAmb</code> command. BuggyAmb application will run on Kestrel and listen HTTP requests on port 5000:<br/><br/>![Running Standalone](Images/standalone.png)<br/>
+* You can run the BuggyAmb application by running <code>dotnet BuggyAmb</code> command. BuggyAmb application will run on Kestrel and listen for the HTTP requests on port 5000:<br/><br/>![Running Standalone](Images/standalone.png)<br/>
 * In this case BuggyAmb application will run in a dotnet.exe process:<br/><br/>![Tasklist](Images/tasklist.png)<br/>
-	
-You will need to find the PID on your environment like above to investigate the correct process.
 
 As an alternative, you can run as a standalone by just running <code>BuggyAmb.exe</code> on command prompt. If you run that way then the BuggyAmb will run in (surprise surprise) BuggyAmb.exe process and you would need to investigate that process.
+
+Once you run the BuggyAmb as a stand alone application, open a browser and test accessing to http://localhost:5000. You should see the following web site:
+
+![Browser test when it runs as standalone](Images/browser_test_standalone.png)
 
 <h3>Hosting on Internet Information Services (IIS)</h3>
 
@@ -89,4 +91,12 @@ In the case above, the requests made via http://buggyamb/ will be routed to this
 
 ![IIS create a web site with host name](Images/windows_hosts_file.png)
 
-After clicking OK and creating the web site, you should be ready for testing the application.
+After clicking OK and creating the web site, you should see the web site created in IIS:
+
+![IIS BuggyAmb web site](Images/IIS_buggyamb_website.png)
+
+Once you create the web site you can test it by either cliking "browse link" in IIS or open a browser and test accessing to http://buggyamb. You should see the following web site:
+
+![Browser test when it runs as standalone](Images/browser_test_iis.png)
+
+Note that if you did not configure hostname then you will access to the BuggyAmb web site via http://localhost:88 or http://localhost if you stop the Default Web Site.
