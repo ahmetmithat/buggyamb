@@ -84,7 +84,7 @@ Here are the instructions:
 
 * Download the latest release here: https://github.com/ahmetmithat/buggyamb/releases/
 * Extract it to c:\inetpub\BuggyAmb folder.
-* Open IIS manager, right click on Sites and choose Add Website to create a new site. You can use similar settings as seen below:
+* Open IIS manager (<code>Start => Run => inetmgr</code>), right click on Sites and choose Add Website to create a new site. You can use similar settings as seen below:
 
 ![IIS create a web site](Images/IIS_create_website.png)
 
