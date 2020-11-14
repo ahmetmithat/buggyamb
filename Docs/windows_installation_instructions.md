@@ -1,5 +1,14 @@
 <h1>Windows Installation Instructions</h1>
 
+On this page:
+
+* <a href="#net-core-version">.NET Core version</a>
+* <a href="#how-to-run-buggyamb">How to run BuggyAmb</a>
+    * <a href="#running-buggyamb-as-a-standalone-application-no-web-server-is-needed">Running BuggyAmb as a standalone application (no web server is needed)</a>
+    * <a href="#hosting-on-internet-information-services-iis">Hosting on Internet Information Services (IIS)</a>
+        * <a href="#installing-iis">Installing IIS</a>
+        * <a href="#creating-buggyamb-web-site-on-iis">Creating BuggyAmb web site on IIS</a>
+
 <h2>.NET Core version</h2>
 
 BuggyAmb is an ASP.NET Core framework-dependent application so it means that the correct version of ASP.NET Core runtime (or IIS Hosting Bundle) should be installed on your machine.
