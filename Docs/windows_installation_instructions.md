@@ -2,19 +2,27 @@
 
 Current release is an ASP.NET Core 3.1 framework-dependent application so it means that you have to install ASP.NET Core 3.1 Runtime on the server.
 
-The main reason for not publishing it as a self-contained application is simple: the size of the package will be much higher than the framework-dependent one. If you want to deploy BuggyAmb as a self-contained application then you can download the source code and publish with that option.
+The main reason for not publishing it as a self-contained application is simple: the size of the package will be much higher than the framework-dependent one when it is deployed as self-contained application because the .NET Core libraries required to run the application will also be shipped with the application. If you want to deploy BuggyAmb as a self-contained application then you can download the source code and publish like that.
 
-You can run BuggyAmb as a standalone application or you can host it on IIS. If you are going to host BuggyAmb on IIS then we recommended installing the Hosting Bundle which includes the both 32bit and 64bit versions of .NET Core Runtime and IIS support (ASP.NET Core Module - ANCM).
+<h2>How to run BuggyAmb</h2>
 
-To install .NET Core 3.1 / ASP.NET Core 3.1 visit https://dotnet.microsoft.com/download/dotnet-core/3.1.
+You can run BuggyAmb as a standalone application or you can host it on IIS. Please check the release information for installing the correct version of .NET Core. The initial release of BuggyAmb is an ASP.NET Core 3.1 application so you will need .NET Core 3.1 runtime / SDK or ASP.NET Core 3.1 should be installed on your machine.
+
+If you are going to host BuggyAmb on IIS then I recommended you to install the Hosting Bundle which includes both 32bit and 64bit versions of .NET Core Runtime and IIS support (ASP.NET Core Module - ANCM).
 
 You can run the following command on command prompt to see which versions are installed on your machine:
 
 > dotnet --info
 
-<h2>Standalone Application</h2>
+To install .NET Core SDK, Runtime or IIS Hosting Bundle, visit https://dotnet.microsoft.com/download/dotnet-core/.
 
-This is the easiest way to run BuggyAmb if you don't want to install / use IIS. However in this case you will need to manage the process startup. Also note that the BuggyAmb application is "buggy" and it will most probably crash due to different reasons. Although this is one of the purposes of this application (investigating crash problems), you may need to start your application once again after it crashes. If you want to automate process management then go with hosting on IIS instructions.
+If you are using the first release of BuggyAmb then you need .NET Core 3.1: https://dotnet.microsoft.com/download/dotnet-core/3.1.
+
+Once again, please install IIS Hosting Bundle if you are going to host BuggyAmb on IIS.
+
+<h2>Running as standalone application (no web server is needed)</h2>
+
+This is the easiest way to run BuggyAmb if you don't want to install IIS. However in this case you will need to manage the process startup. Also note that the BuggyAmb application is "buggy" and it will most probably crash due to different reasons. Although this is one of the purposes of this application (investigating crash problems), you may need to start your application once again after it crashes. If you want to automate process management then go with hosting on IIS instructions.
 
 Here are the instructions to run BuggyAmb as a standalone application:
 
@@ -30,9 +38,18 @@ As an alternative, you can run as a standalone by just running <code>BuggyAmb.ex
 
 If you need to configure HTTPS or run on another port then you can download the source code and  make the necessary changes based on your needs easily. 
 
-<h2>Hosting on IIS</h2>
+<h2>Hosting on Internet Information Services (IIS)</h2>
 
 Hosting on IIS is easy and I would choose this option over running a standalone applicaiton. This is because:
 
 * IIS will manage the process startup: WAS service will restart the process once it crashes unless the application crashes frequently and the pool is disabled due to Rapid Fail Protection.
-* Hosting on IIS is usually the preferred way for hosting ASP.NET Core appliations on Windows so this is closer to the real world scenarios.
+* Hosting on IIS is usually the preferred way for hosting ASP.NET Core appliations on Windows so this is closer to the real world scenarios. So you would see symptoms that applies to more real scenarios while doing troubleshooting.
+
+IIS is part of the Windows operating system and it can be installed at Control Panel\Programs\Programs and Features window by clicking "Turn Windows features on or off" on client Windows operating systems such as Windows 10. Default installation of IIS should be enough for hosting ASP.NET Core applications:br/> 
+
+![IIS installation on Windows 10](Images/IIS_on_client_SKU.png)
+
+If you are on a server SKU, such as Windows Server 2019, you can install the IIS by adding the web server role in Server Manager. You can follow the instructions given in https://www.thebestcsharpprogrammerintheworld.com/2016/06/07/lab-1-install-iis-and-create-a-web-site/ if you need help.
+
+After installation is completed you should be able to see the welcome page of IIS when you browse http://localhost/. If you don't get it, then something should be wrong.
+
