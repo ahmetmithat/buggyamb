@@ -54,10 +54,12 @@ So you need to prepare your machine so you can use those tools when needed.
 
 A good data analysis will give you the power to fix the problem and avoid it to happen. Root cause of some of the problems may be related with some external components that you cannot control but you can at least take some pre-cautions to handle the situation when that external component fails.
 
+I also want to highlight the importance of documentation at this stage although the documentation should be done from the first step to last step if possible. It is possbile that the documentation could be a bit difficult under pressure when a problem's impact is high, but I encourage you to take notes during each step and document them while you have a cup of tea after the problem is resolved .  
+
 <h3>Measure and Monitor</h3>
 
 This is last but not least and actually this should be done always, and I mean "always". You should always monitor your application and get alerted when a problem happens so you can act on time.
 
 You should also measure your application always to understand how your application behaves while everything is working fine. To do so you can capture some metrics, such as performance counters, and use those as a baseline, compare it with the same metrics captured at problem time, and you can then answer the following questions: what changed, are the exceptions increasing, are the CPU and/or memory usages unexpected, are there any contention or context switching?, etc...
 
-As you can see if you measure and monitor then you can easily start identifying the problem.
+As you can see if you measure and monitor your application then you can easily start identifying the problem.
