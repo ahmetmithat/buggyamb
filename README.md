@@ -55,7 +55,7 @@ Note that some data analysis can be done while capturing the data on the server,
 
 So you need to prepare your machine so you can use those tools when needed.
 
-<h3>Fix the problem and avoid it to happen again</h3>
+<h3>Fixing the problem and avoiding it to happen again</h3>
 
 A good data analysis will give you the power to fix the problem and avoid it to happen. Root cause of some of the problems may be related with some external components that you cannot control but you can at least take some pre-cautions to handle the situation when that external component fails.
 
@@ -63,7 +63,7 @@ I also want to highlight the importance of documentation at this stage although 
 
 If you document it, most likely you are going to avoid the same problem because you will consolidate what you learn while you document it. You can also share your knowledge with the others if you document it and sharing is good.
 
-<h3>Measure and Monitor</h3>
+<h3>Measuring and Monitoring</h3>
 
 This is last but not least and actually this should be done always, and I mean "always".
 
