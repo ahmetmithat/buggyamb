@@ -9,7 +9,7 @@
 
 <h2>.NET Core version</h2>
 
-BuggyAmb is an ASP.NET Core framework-dependent application so it means that the correct version of ASP.NET Core runtime (or IIS Hosting Bundle) should be installed on your machine.
+BuggyAmb is an ASP.NET Core framework-dependent application so it means that the correct version of ASP.NET Core runtime should be installed on your machine.
 
 The main reason for not publishing BuggyAmb as a self-contained application was simple: the size of the package would be much higher than the framework-dependent one when it is deployed as self-contained application because the .NET Core libraries required to run the application will also be shipped with the application. If you want to deploy BuggyAmb as a self-contained application then you can download the source code and publish like that.
 
