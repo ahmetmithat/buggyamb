@@ -4,3 +4,4 @@
 * <a href="linux_installation_instructions.md">Linux Installation Instructions</a>
 
 All releases will be here: https://github.com/ahmetmithat/buggyamb/releases/
+        

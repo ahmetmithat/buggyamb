@@ -15,9 +15,9 @@ All releases will be here: https://github.com/ahmetmithat/buggyamb/releases/
 
 <h2>Very speacial thanks to Tess Ferrandez</h2>
 
-Tess Ferrandez is a software engineer at Microsoft and when I start my support engineer career, I practiced her debugging labs with that famous BuggyBits application she developed. It was one of my greatest learning adventure when I worked with the BuggyBits to practice debugging ASP.NET applications in WinDbg.
+Tess Ferrandez is a software engineer at Microsoft and when I started my support engineer career at Microsoft, I practiced her famous "BuggyBits" application and I took those great debugging labs to learn ASP.NET debugging on WinDbg.
 
-Some scenarios on the initial release of BuggyAmb is based on what Tess did with BuggyBits and I "borrowed" at least two scenarios and implemented it in BuggyAmb.
+Some scenarios on the initial release of BuggyAmb is based on what Tess did with BuggyBits. I "borrowed" at least two scenarios and implemented it in BuggyAmb (also borrowed the name as well).
 
 You can follow Tess at https://github.com/TessFerrandez.
 
