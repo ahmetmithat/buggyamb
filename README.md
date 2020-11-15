@@ -24,8 +24,22 @@ As a support engineer, I can confidently say that if you know how to collect the
 
 <h2>A successfull troubleshooting session has the following characteristics:</h2>
 
-* Identifying the issue: if you cannot define the problem then you cannot know where to look. If you don't know where to look you cannot collect good data and as a result, you cannot solve the problem easily. Some problems seem complex but if you define it correctly you may narrow down it to a specific component.
-* Collecting data: once you identify the issue you need to collect the data at the correct time: most of the times you will need to collect the data when a problem happens. If you can reproduce the same problem then it is OK but if you cannot reproduce the problem easily and if you miss the data collection then you may need to wait for the next occurence which may be a problem. So you need to know what kind of tools you have, how to use those tools in which scenario, etc...
-* Data analysis: Just like collecting data, there are great tools that you can use to analyse data and you need to know what kind of tools there are. Note that some data analysis can be done while capturing the data on the server, for example you can look at a network trace while you capture data but some data will be analysed seperately on another machine. So you need to prepare your client machine to make analysis on the data collected on another machine - most probbably from a server.
-* Fix the problem and avoid it to happen again: a good data analysis will give you the power to fix the problem and avoid it to happen.
-* Measure and monitor: this is last but not least and actually this should be done always, meaning that, you should always measure your application to understand how your application behaves while it works. You should capture some metrics, such as performance counters, to use as a baseline. With that baseline data you understand how your application look and how the metrics look like at normal times. Then once you face with a problem you can compare the same metrics to understand the big picture. For example you can check what changed, are the exceptions increasing, are the CPU and/or memory usages unexpected, are there any contention or context switching?, etc...As you can see if you measure and monitor then you can easily identify the problem.
+<h3>Identifying the issue</h3>
+
+If you cannot define the problem then you cannot know where to look. If you don't know where to look you cannot collect good data and as a result, you cannot solve the problem easily. Some problems seem complex but if you define it correctly you may narrow down it to a specific component.
+
+<h3>Collecting data</h3>
+
+Once you identify the issue you need to collect the data at the correct time: most of the times you will need to collect the data when a problem happens. If you can reproduce the same problem then it is OK but if you cannot reproduce the problem easily and if you miss the data collection then you may need to wait for the next occurence which may be a problem. So you need to know what kind of tools you have, how to use those tools in which scenario, etc...
+
+<h3>Data analysis</h3>
+
+Just like collecting data, there are great tools that you can use to analyse data and you need to know what kind of tools there are. Note that some data analysis can be done while capturing the data on the server, for example you can look at a network trace while you capture data but some data will be analysed seperately on another machine. So you need to prepare your client machine to make analysis on the data collected on another machine - most probbably from a server.
+
+<h3>Fix the problem and avoid it to happen again</h3>
+
+A good data analysis will give you the power to fix the problem and avoid it to happen.
+
+<h3>Measure and Monitor</h3>
+
+This is last but not least and actually this should be done always, meaning that, you should always measure your application to understand how your application behaves while it works. You should capture some metrics, such as performance counters, to use as a baseline. With that baseline data you understand how your application look and how the metrics look like at normal times. Then once you face with a problem you can compare the same metrics to understand the big picture. For example you can check what changed, are the exceptions increasing, are the CPU and/or memory usages unexpected, are there any contention or context switching?, etc...As you can see if you measure and monitor then you can easily identify the problem.
