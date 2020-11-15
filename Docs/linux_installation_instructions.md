@@ -1,3 +1,3 @@
 Linux Installation Instructions
 
-* Download the latest release
+Placeholder for Linux installation instructions
