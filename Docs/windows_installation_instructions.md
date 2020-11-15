@@ -39,8 +39,8 @@ There are advantages and disadvantages of both, e.g.:
 
 * Running as stand alone application is very easy. You do not need to deal with installing IIS and creating a web site.
 * When you run as stand alone, you will need to manage to start BuggyAmb once it stops / crashes.
-* Hosting on IIS is usually the preferred way for several people in real world scenarios where the OS is Windows so you will be seeing more real-world examples when troubleshooting BuggyAmb.
-* IIS (actually the WAS service) will manage the process startups so if BuggyAmb crashes then IIS will start it without you to take action (unless the application is pool is disabled due to Rapid Fail Protection).
+* Hosting on IIS is usually the preferred way for several people in real world scenarios where the OS is Windows so if you want more close environment to real world scenarios you should choose hosting on IIS.
+* IIS (actually the WAS service) will manage the process startups so if BuggyAmb crashes then IIS will start it without you to take action (unless the application is pool is disabled due to Rapid Fail Protection) if you host on IIS.
 
 So make your choice, it is all up to you.
 
