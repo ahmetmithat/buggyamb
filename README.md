@@ -10,9 +10,8 @@ Each release of BuggyAmb may have a different look and may include different sce
 
 All releases will be here: https://github.com/ahmetmithat/buggyamb/releases/
 
-<a href="Docs/windows_installation_instructions.md">Windows Installation Instructions</a>
-<br />
-<a href="Docs/linux_installation_instructions.md">Linux Installation Instructions</a>
+* <a href="Docs/windows_installation_instructions.md">Windows Installation Instructions</a>
+* <a href="Docs/linux_installation_instructions.md">Linux Installation Instructions</a>
 
 <h2>Very speacial thanks to Tess Ferrandez</h2>
 
