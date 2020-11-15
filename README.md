@@ -54,12 +54,27 @@ So you need to prepare your machine so you can use those tools when needed.
 
 A good data analysis will give you the power to fix the problem and avoid it to happen. Root cause of some of the problems may be related with some external components that you cannot control but you can at least take some pre-cautions to handle the situation when that external component fails.
 
-I also want to highlight the importance of documentation at this stage although the documentation should be done from the first step to last step if possible. It is possbile that the documentation could be a bit difficult under pressure when a problem's impact is high, but I encourage you to take notes during each step and document them while you have a cup of tea after the problem is resolved .  
+I also want to highlight the importance of documentation at this stage although the documentation should be done from the first step to last step if possible. I know that the documentation could be a bit difficult under pressure when the business impact is high, but I encourage you to take some notes during each step and document them while you have a cup of tea after the problem is resolved.
+
+If you document it, most likely you are going to avoid the same problem because you will consolidate what you learn while you document it. You can also share your knowledge with the others if you document it and sharing is good.
 
 <h3>Measure and Monitor</h3>
 
-This is last but not least and actually this should be done always, and I mean "always". You should always monitor your application and get alerted when a problem happens so you can act on time.
+This is last but not least and actually this should be done always, and I mean "always".
 
-You should also measure your application always to understand how your application behaves while everything is working fine. To do so you can capture some metrics, such as performance counters, and use those as a baseline, compare it with the same metrics captured at problem time, and you can then answer the following questions: what changed, are the exceptions increasing, are the CPU and/or memory usages unexpected, are there any contention or context switching?, etc...
+* You should always monitor your application and get alerted when a problem happens so you can act on time. There are great tools, such as SCOM, to monitor your applications.
+* You should measure your application to understand how your application behaves while everything is working fine.
 
-As you can see if you measure and monitor your application then you can easily start identifying the problem.
+To measure your application I recommend you to capture some metrics, such as performance counters and use those as a baseline data. Your baseline data should be up to date: don't forget to capture new baseline data if anything is changed in your application or in the environment (e.g.: added new server, installed new patches, upgraded the .NET version, etc...).
+
+Once you have a baseline data, you can compare it with the same metrics captured at a problem time which will help you to answer the following questions:
+
+* What is changed, when is the problem started?
+* What were the expected response times and what are the actual response times, how slow is that?
+* Are all of the application is affected, or is some part of the application affected?
+* Is the load increased? Are the requests queued?
+* Are the CPU and memory usages unexpected compared with the baseline data?
+* What about exceptions, contentions or context switching, are they increasing?
+* etc...
+
+As you can see if you measure and monitor your application then you can easily start identifying the problem. In some scenarios you may need to take action quickly before comparing these data but if you know how your application works then you can at least make some meaningful comments about the questions above which will give you a quick and good start to your troubleshooting session.
