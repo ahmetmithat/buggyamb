@@ -1,7 +1,5 @@
 <h1>Windows Installation Instructions</h1>
 
-On this page:
-
 * <a href="#net-core-version">.NET Core version</a>
 * <a href="#how-to-run-buggyamb">How to run BuggyAmb</a>
     * <a href="#running-buggyamb-as-a-standalone-application-no-web-server-is-needed">Running BuggyAmb as a standalone application (no web server is needed)</a>
