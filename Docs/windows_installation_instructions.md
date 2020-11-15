@@ -96,7 +96,7 @@ In the case above, the requests made via http://buggyamb/ will be routed to this
 
 ![IIS create a web site with host name](Images/windows_hosts_file.png)
 
-After clicking OK and creating the web site, you should see the web site created in IIS:
+After clicking OK and creating the web site, you should see it in IIS manager:
 
 ![IIS BuggyAmb web site](Images/IIS_buggyamb_website.png)
 
