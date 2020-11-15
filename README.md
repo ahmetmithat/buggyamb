@@ -30,7 +30,9 @@ If you cannot define the problem then you cannot know where to look. If you don'
 
 If you know how your application works then you can understand what is different when the problem happens and you can start defining the problem.
 
-<b>Bad definition:</b> it was running fast and now it is slow
+<b>A bad definition:</b> it was running fast and now it is slow
+<br/>
+<br/>
 <b>Good definition:</b> it was responding to this page under 1 seconds and when the problem happens it takes up to 60 seconds. At the same time CPU and memory usage also increases until restarting the app.
 
 <h3>Collecting data</h3>
