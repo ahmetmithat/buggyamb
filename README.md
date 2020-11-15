@@ -22,7 +22,7 @@ The goal of this application is NOT teaching you the best practices when writing
 
 As a support engineer, I can confidently say that if you know how to collect the required data when you encounter a problem, you have the most important knowledge on the way to a solution. Collecting the right data at the right time is one of the most important steps to take to address a problem and solve it.
 
-<h1>A successfull troubleshooting session has the following characteristics:</h1>
+<h2>A successfull troubleshooting session has the following characteristics:</h2>
 
 * Identifying the issue: if you cannot define the problem then you cannot know where to look. If you don't know where to look you cannot collect good data and as a result, you cannot solve the problem easily. Some problems seem complex but if you define it correctly you may narrow down it to a specific component.
 * Collecting data: once you identify the issue you need to collect the data at the correct time: most of the times you will need to collect the data when a problem happens. If you can reproduce the same problem then it is OK but if you cannot reproduce the problem easily and if you miss the data collection then you may need to wait for the next occurence which may be a problem. So you need to know what kind of tools you have, how to use those tools in which scenario, etc...
