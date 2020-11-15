@@ -70,7 +70,7 @@ Hosting on IIS is also easy and I prefer this option over running as a standalon
 
 <h4>Installing IIS</h4>
 
-IIS is part of the Windows operating system and it can be installed at Control Panel\Programs\Programs and Features window by clicking "Turn Windows features on or off" on client Windows operating systems such as Windows 10. Default installation of IIS should be enough for hosting ASP.NET Core applications:br/> 
+IIS is part of the Windows operating system and it can be installed at Control Panel\Programs\Programs and Features window by clicking "Turn Windows features on or off" on client Windows operating systems such as Windows 10. Default installation of IIS should be enough for hosting ASP.NET Core applications:
 
 ![IIS installation on Windows 10](Images/IIS_on_client_SKU.png)
 
