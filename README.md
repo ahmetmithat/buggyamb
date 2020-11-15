@@ -8,6 +8,12 @@ BuggyAmb is just a very buggy ASP.NET Core Razor Pages based application. This a
 
 Each release of BuggyAmb may have a different look and may include different scenarios to troubleshoot. Please check the release information for more details.
 
+All releases will be here: https://github.com/ahmetmithat/buggyamb/releases/
+
+<a href="Docs/windows_installation_instructions.md">Windows Installation Instructions</a>
+<br />
+<a href="Docs/linux_installation_instructions.md">Linux Installation Instructions</a>
+
 <h2>Very speacial thanks to Tess Ferrandez</h2>
 
 Tess Ferrandez is a software engineer at Microsoft and when I start my support engineer career, I practiced her debugging labs with that famous BuggyBits application she developed. It was one of my greatest learning adventure when I worked with the BuggyBits to practice debugging ASP.NET applications in WinDbg.
