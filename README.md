@@ -32,7 +32,7 @@ If you know how your application works then you can understand what is different
 
 <b>A bad definition:</b> it was running fast and now it is slow.
 <br/>
-<b>Good definition:</b> it was responding to this page under 1 seconds and when the problem happens it takes up to 60 seconds. At the same time CPU and memory usage also increases until restarting the app.
+<b>Good definition:</b> it was responding to this page under 1 seconds and when the problem happens it takes up to 60 seconds. At the same time CPU and memory usage also increases until the application is restarted.
 
 <h3>Collecting data</h3>
 
