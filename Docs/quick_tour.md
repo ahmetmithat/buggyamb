@@ -30,17 +30,13 @@ Things go weirder if you run the <code>Slow 2</code> or <code>Slow 3</code> scen
 
 ![BuggyAmb Slow Scenario 2](Images/browser_problem_slow_2.png)
 
-When you reproduce these issues first check the event logs. Do you see any symptom about the problem? You may see that the IIS WAS sevice thinks that the process is unhealthy and you may be seeing some signs that the process is restarted by WAS service again. Of course these are logged if you host BuggyAmb on IIS.
+If you host BuggyAmb on IIS then you may want to check the event logs first. Do you see any symptom / information about the problem? You may see that the IIS WAS sevice thinks that the process is unhealthy and may see some signs that the process is restarted by WAS service again.
 
-You may want to approach these kind of performance problems by checking how long it takes for the application to process the requests. If you are on IIS, you have IIS logs or FREB logs, and you can also look at the active running requests by using IIS Manager => Worker Processes window.
+You may also want to understand how the requests are slow, or, do they end up with HTTP 200 or do they end up with HTTP 500? If you are on IIS, you have IIS logs or FREB logs, and you can also look at the active running requests by using IIS Manager => Worker Processes window. If you are running BuggyAmb on Linux behind an Nginx or Apache server then you may want to check the web server logs to see how long it takes for the application to process the requests.
 
-If you host it on Linux behind an Nginx or Apache server then you may want to check the web server logs to see how long it takes for the application to process the requests.
+A good approach would also be to check the performance counters to undertstand what is unexpected: is CPU / memory usage high? Are exceptions increasing? Is there any race condition symtpoms? etc...
 
-A good approach would be to check the performance counters to undertstand what is unexpected: is CPU / memory usage high? Are exceptions increasing? Is there any race condition symtpoms? etc...
-
-However all of those information will most probably give you a big picture about the problem.
-
-You may want to troubleshoot these performance issues by analyzing memory dumps or profiler traces.
+However all of those information will most probably give you a big picture about the problem but won't tell anything about the root cause of the issue. You may want to troubleshoot these kind of performance issues by analyzing memory dumps or profiler traces.
 
 <h2>Crash Problem Scenarios</h2>
 
