@@ -48,7 +48,15 @@ However all of those information will most probably give you a big picture about
 
 BuggyAmb is not only slow but also does crash because of different reasons. Because it is buggy. It is actually so buggy that some of the crash scenarios may show different results on different platforms. For example, take the <code>Crash 1</code> scenario: in this scenario the process crashes if I run the application on Windows, BUT, strangely enough, the process "may" crash or hang if I run it on Linux. Of course there should be a reasonable explanation for it - maybe someone can explain this.
 
-Let's take a quick look at the crash scenarios.
+Depending on how you run the BuggyAmb directly affects the symptoms you are seeing with crash scenarios. If you are hosting on IIS then the WAS service will manage the process startup, shutdown and restarts so if a crash happens when hosted on IIS, you may not see the symptoms on browser since the process may be restarted after a crash.
+
+Similarly, if you are hosting the application on Linux as a service (or daemon?) on Linux then the OS may restart the application after a crash and once again the symptoms may not be directly visible.
+
+However if you are running BuggyAmb as a stand-alone application and if there is no tool / process to manage automatic startups you may directly notice the process crash because no one will restart the process once it is crashed and the requests will end up with an error.
+
+I assumed that the process startups are handled by IIS WAS or OS in the following descriptions.
+
+Let's take a look at the crash scenarios.
 
 <h3>Crash Scenario 1</h3>
 
@@ -70,7 +78,7 @@ You can review the "event logs" if you are on Windows and "journal logs" if you 
 
 You may need to capture a crash dump to troubleshoot this crash issue.
 
-<h3>Crash Scenario 1</h3>
+<h3>Crash Scenario 2</h3>
 
 If you click <code>Crash 2</code> scenario you will see a fancy message:
 
@@ -78,11 +86,25 @@ If you click <code>Crash 2</code> scenario you will see a fancy message:
 
 What kind of developer would ask the users if that request will cause a process crash not? Probably a buggy developer, right?
 
-Anyways, if you keep browsing the application's other pages you may see that the requests are working fine. When I run this scenario on my development environment, Visual Studio JIT Debugger is launched because it captured the process crash:
+Anyways, if you want to answer the developer's that weird question, you may want to keep browsing the other pages to see if it is working fine or not.
+
+When I run this scenario on my development environment where Visual Studio is installed, the application kept working for some time but then the Visual Studio JIT Debugger is launched because it acted as my default debugger and it captured the process crash:
 
 ![BuggyAmb Crash Scenario 2 - VS JIT Debugger](Images/browser_problem_crash_2_jit_debugger.png)
 
-However, after some time (not so long) you may see the following error for your requests:
+However, if I disable the VS JIT Debugger, or, if I run this on a server where JIT Debugging is not enabled at all, I do not see any symptom and I can access the Expected Results and home page fine. However, if I first send a few requests to <code>Slow</code> page and then click the <code>Crash 2</code> then I see that the requests for the <code>Slow</code> pages ended up with an error:
+
+![BuggyAmb Crash Scenario 2 - Error](Images/browser_problem_crash_2_error.png)
+
+The symptoms of this scenario is more visible when there are several requests made to the application. For example, if you use that experimental <code>Load Generator</code> page to send multiple requests to different pages, you would see the errors more frequently.
+
+So to answer the developer's question: that page is not innocent my friend, keep an eye on it. 
+
+<h3>Troubleshooting tips for Crash Scenario 2</h3>
+
+This scenario can hide the symptoms from end users easily. You may see that the application is working fine but it may be crash in the background.
+
+Troubleshooting tips are no different than the first scenario. You may want to confirm the PID changes, check the event logs on Windows or journal logs on Linux, and so on...Again, you may need to capture a crash dump to troubleshoot this issue although in this case the event logs (or journal logs) will give you the reason of the crash. I still recommend you to use a debugger to find the reason of the crash to practice data collection and dump analysis.
 
 
 
