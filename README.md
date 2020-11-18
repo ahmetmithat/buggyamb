@@ -13,6 +13,8 @@ All releases will be here: https://github.com/ahmetmithat/buggyamb/releases/
 * <a href="Docs/windows_installation_instructions.md">Windows Installation Instructions</a>
 * <a href="Docs/linux_installation_instructions.md">Linux Installation Instructions</a>
 
+For a quick tour of the application please click here: <a href="Docs/windows_installation_instructions.md">Quick Tour</a>
+
 <h2>Very speacial thanks to Tess Ferrandez</h2>
 
 Tess Ferrandez is a software engineer at Microsoft and when I started my support engineer career at Microsoft, I practiced her famous "BuggyBits" application and I took those great debugging labs to learn ASP.NET debugging on WinDbg.
