@@ -82,7 +82,7 @@ You can review the "event logs" if you are on Windows and "journal logs" if you 
 
 You may need to capture a crash dump to troubleshoot this crash issue.
 
-<h3>Crash Scenario 2 & 4</h3>
+<h3>Crash Scenario 2 & 3</h3>
 
 If you click <code>Crash 2</code> or <code>Crash 3</code> scenario, you will see a fancy message:
 
