@@ -48,7 +48,7 @@ However all of those information will most probably give you a big picture about
 
 BuggyAmb is not only slow but also does crash because of different reasons. Because it is buggy. It is actually so buggy that some of the crash scenarios may show different results on different platforms. For example, take the <code>Crash 1</code> scenario: in this scenario the process crashes if I run the application on Windows, BUT, strangely enough, the process "may" crash or hang if I run it on Linux. Of course there should be a reasonable explanation for it - maybe someone can explain this.
 
-Depending on how you run the BuggyAmb directly affects the symptoms you are seeing with crash scenarios. If you are hosting on IIS then the WAS service will manage the process startup, shutdown and restarts so if a crash happens when hosted on IIS, you may not see the symptoms on browser since the process may be restarted after a crash.
+The way you run the BuggyAmb directly affects the symptoms you are seeing with crash scenarios. If you are hosting on IIS then the WAS service will manage the process startup, shutdown and restarts so if a crash happens when hosted on IIS, you may not see the symptoms on browser since the process may be restarted after a crash.
 
 Similarly, if you are hosting the application on Linux as a service (or daemon?) on Linux then the OS may restart the application after a crash and once again the symptoms may not be directly visible.
 
