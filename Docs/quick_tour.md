@@ -18,6 +18,10 @@ Links for the problem scenarios are located on the left pane along with a link t
 
 ![BuggyAmb Problem Pages](Images/browser_expected_results.png)
 
+<h2>Performance Problem Scenarios</h2>
+
+BuggyAmb is a slow and buggy application.
+
 <code>Slow</code> scenario is where things start to go wrong. When you click the link you should see that loading the same content takes much more than the fast one:
 
 ![BuggyAmb Slow Scenario 1](Images/browser_problem_slow_1.png)
@@ -27,6 +31,30 @@ You can troubleshoot why that page is so slow by analyzing memory dumps or profi
 Things go weirder if you run the <code>Slow 2</code> or <code>Slow 3</code> scenarios. In those scenarios the page keeps loading but never finishes:
 
 ![BuggyAmb Slow Scenario 2](Images/browser_problem_slow_2.png)
+
+<h2>Crash Problem Scenarios</h2>
+
+BuggyAmb is not only slow but also does crash because of different reasons.
+
+If you click <code>Crash 1</code> scenario you may confuse it with a performance problem because it may show you what you see with Slow 2 or Slow 3 scenarios - page keeps loading but never finishes:
+
+![BuggyAmb Crash Scenario 1](Images/browser_problem_crash_1.png)
+
+If you try to capture manual memory dumps mostly suitable for performance issues, you may not get what you want because this is actually not a performance problem.
+
+Also you may see the following errors if you make requests to any other page when you run this scenario. I made a few requests to home page and the expected results page in new browser tabs when I run this scenario and eventually I ended up with this page:
+
+![BuggyAmb Crash Scenario 1 - Connection Reset Error](Images/browser_problem_crash_1_connection_reset_error.png)
+
+You may want to open task manager before running this scenario and see if the process ID changes. If it is changing then either the process is crashed or the process is restarted by the "system", e.g.: by WAS service if BuggyAmb is hosted on IIS.
+
+You can review the "event logs" if you are on Windows and "journal logs" if you are on Linux to see if there is any information about the problem.
+
+You may need to capture a crash dump to troubleshoot this problem.
+
+
+
+<h2>The other scenarios</h2>
 
 The <code>Handled Exception</code> and <code>Unhandled Exception</code> scenarios are self-explanatory. If you click <code>Handled</code> one you will this:
 
