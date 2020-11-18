@@ -6,7 +6,7 @@ When you first browse the BuggyAmb application you should see the following Welc
 
 ![BuggyAmb Welcome Page](Images/browser_welcome_to_buggyamb.png)
 
-The problem scenarios are in "Problem Pages". If you click Problem Pages link you will see the following screen:
+The problem scenarios are under "Problem Pages". If you click Problem Pages link you will see the following screen:
 
 ![BuggyAmb Problem Pages](Images/browser_problem_pages.png)
 
@@ -20,17 +20,27 @@ Links for the problem scenarios are located on the left pane along with a link t
 
 <h2>Performance Problem Scenarios</h2>
 
-BuggyAmb is a slow and buggy application.
+BuggyAmb is a very slow application.
 
-<code>Slow</code> scenario is where things start to go wrong. When you click the link you should see that loading the same content takes much more than the fast one:
+<code>Slow</code> scenario is where things start going wrong. When you click the link you should see that loading the same content takes much more than the fast one:
 
 ![BuggyAmb Slow Scenario 1](Images/browser_problem_slow_1.png)
-
-You can troubleshoot why that page is so slow by analyzing memory dumps or profiler traces.
 
 Things go weirder if you run the <code>Slow 2</code> or <code>Slow 3</code> scenarios. In those scenarios the page keeps loading but never finishes:
 
 ![BuggyAmb Slow Scenario 2](Images/browser_problem_slow_2.png)
+
+When you reproduce these issues first check the event logs. Do you see any symptom about the problem? You may see that the IIS WAS sevice thinks that the process is unhealthy and you may be seeing some signs that the process is restarted by WAS service again. Of course these are logged if you host BuggyAmb on IIS.
+
+You may want to approach these kind of performance problems by checking how long it takes for the application to process the requests. If you are on IIS, you have IIS logs or FREB logs, and you can also look at the active running requests by using IIS Manager => Worker Processes window.
+
+If you host it on Linux behind an Nginx or Apache server then you may want to check the web server logs to see how long it takes for the application to process the requests.
+
+A good approach would be to check the performance counters to undertstand what is unexpected: is CPU / memory usage high? Are exceptions increasing? Is there any race condition symtpoms? etc...
+
+However all of those information will most probably give you a big picture about the problem.
+
+You may want to troubleshoot these performance issues by analyzing memory dumps or profiler traces.
 
 <h2>Crash Problem Scenarios</h2>
 
