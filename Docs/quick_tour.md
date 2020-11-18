@@ -52,7 +52,9 @@ The way you run the BuggyAmb directly affects the symptoms you are seeing with c
 
 Similarly, if you are hosting the application on Linux as a service (or daemon?) on Linux then the OS may restart the application after a crash and once again the symptoms may not be directly visible.
 
-However if you are running BuggyAmb as a stand-alone application and if there is no tool / process to manage automatic startups you may directly notice the process crash because no one will restart the process once it is crashed and the requests will end up with an error.
+Note that, when hosted on IIS, you may see <code>HTTP 503 - Service Unavailable</code> errors quickly if crashes happen frequently enough and IIS Rapid Fail Protection kicks in and disables the application pool.
+
+If you are running BuggyAmb as a stand-alone application and if there is no tool / process to manage automatic startups you may directly notice the process crash because no one will restart the process once it is crashed and the requests will end up with an error.
 
 I assumed that the process startups are handled by IIS WAS or OS in the following descriptions.
 
@@ -68,6 +70,8 @@ Also you may see the following errors if you make requests to any other page whe
 
 ![BuggyAmb Crash Scenario 1 - Connection Reset Error](Images/browser_problem_crash_1_connection_reset_error.png)
 
+Note that, when hosted on IIS, you may see <code>HTTP 503 - Service Unavailable</code> errors quickly if crashes happen frequently enough and IIS Rapid Fail Protection kicks in and disables the application pool.
+
 <h3>Troubleshooting tips for Crash Scenario 1</h3>
 
 If you try to capture manual memory dumps which are mostly useful for troubleshooting performance issues, you may not get what you want because this is actually not a performance problem.
@@ -78,13 +82,15 @@ You can review the "event logs" if you are on Windows and "journal logs" if you 
 
 You may need to capture a crash dump to troubleshoot this crash issue.
 
-<h3>Crash Scenario 2</h3>
+<h3>Crash Scenario 2 & 4</h3>
 
-If you click <code>Crash 2</code> scenario you will see a fancy message:
+If you click <code>Crash 2</code> or <code>Crash 3</code> scenario, you will see a fancy message:
 
 ![BuggyAmb Crash Scenario 2](Images/browser_problem_crash_2.png)
 
-What kind of developer would ask the users if that request will cause a process crash not? Probably a buggy developer, right?
+The message will be different in Crash 3 scenario.
+
+What kind of developer would ask the users if that request will cause a process crash or not? Probably a buggy developer, right?
 
 Anyways, if you want to answer the developer's weird question, you may want to keep browsing the other pages to see if it is working fine or not.
 
@@ -98,9 +104,11 @@ However, if I disable the VS JIT Debugger, or, if I run this on a server where J
 
 The symptoms of this scenario is more visible when there are several requests made to the application. For example, if you use that experimental <code>Load Generator</code> page to send multiple requests to different pages, you would see the errors more frequently.
 
+Note that, when hosted on IIS, you may see <code>HTTP 503 - Service Unavailable</code> errors quickly if crashes happen frequently enough and IIS Rapid Fail Protection kicks in and disables the application pool.
+
 So to answer the developer's question: that page is not innocent my friend, keep an eye on it. 
 
-<h3>Troubleshooting tips for Crash Scenario 2</h3>
+<h3>Troubleshooting tips for Crash Scenario 2 & 3</h3>
 
 This scenario can hide the symptoms from end users easily. You may see that the application is working fine but it may be crashing in the background.
 
