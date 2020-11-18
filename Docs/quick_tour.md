@@ -86,7 +86,7 @@ If you click <code>Crash 2</code> scenario you will see a fancy message:
 
 What kind of developer would ask the users if that request will cause a process crash not? Probably a buggy developer, right?
 
-Anyways, if you want to answer the developer's that weird question, you may want to keep browsing the other pages to see if it is working fine or not.
+Anyways, if you want to answer the developer's weird question, you may want to keep browsing the other pages to see if it is working fine or not.
 
 When I run this scenario on my development environment where Visual Studio is installed, the application kept working for some time but then the Visual Studio JIT Debugger is launched because it acted as my default debugger and it captured the process crash:
 
@@ -102,7 +102,7 @@ So to answer the developer's question: that page is not innocent my friend, keep
 
 <h3>Troubleshooting tips for Crash Scenario 2</h3>
 
-This scenario can hide the symptoms from end users easily. You may see that the application is working fine but it may be crash in the background.
+This scenario can hide the symptoms from end users easily. You may see that the application is working fine but it may be crashing in the background.
 
 Troubleshooting tips are no different than the first scenario. You may want to confirm the PID changes, check the event logs on Windows or journal logs on Linux, and so on...Again, you may need to capture a crash dump to troubleshoot this issue although in this case the event logs (or journal logs) will give you the reason of the crash. I still recommend you to use a debugger to find the reason of the crash to practice data collection and dump analysis.
 
