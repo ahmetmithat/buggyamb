@@ -54,19 +54,24 @@ BuggyAmb is not only slow but also does crash because of different reasons. Why?
 
 It is actually so buggy that some of the crash scenarios may show different results on different platforms. For example, take the first <code>Crash 1</code> scenario: in this scenario the process crashes if I run the application on Windows, BUT, strangely enough (at least for me, maybe it is too obvious for some of you), the process "may" crash or "hang" if I run it on Linux. Of course there should be a reasonable explanation for it - feel free to make comments on this.
 
-<Symptoms>
+<h3>Symptoms</h3>
 
 The way you run the BuggyAmb directly affects the symptoms you are seeing with crash scenarios. You may be incorrectly assuming that the application works fine and there is no crash because the symptoms of the crash may be hidden from the end users. For example:
 
+<b>Hosting on IIS or as a Linux deamon</b>
+
+In these cases the process will be started automatically once it is crashed.
+
 * If you are hosting on IIS then the WAS service will manage the process startup, shutdown and restarts so if a crash happens when hosted on IIS, you may not see the symptoms on browser since the process may be restarted so quickly once it crashes that new requests would be handled by new one.
-* Or, there could be multiple instances of the application (e.g.: running on a web farm behind a load balancer, running in a "web garden" scenario on IIS, etc...) and the new requests would be handled by another process.
 * Similarly, if you are hosting the application on Linux as a service (or as a daemon?) on Linux then the OS may restart the application after a crash and once again new request would be handled by new one.
+
+>There could be multiple instances of the application running at the same time if you are hosting the application in a web farm behind a load balancer. Or, you may be running in a "web garden" scenario on IIS, etc...and the new requests would be handled by another process.
 
 As a result, the symptoms may not be directly visible for the end users.
 
-<code>
-When hosted on IIS, you may see <code>HTTP 503 - Service Unavailable</code> errors if the process crashes happen frequently enough for IIS Rapid Fail Protection to disable the application pool - thinking that the application cannot be recovered from this frequent crashes because it happens a lot and deciding to just stop the application.
-</code>
+>When hosted on IIS, you may see <code>HTTP 503 - Service Unavailable</code> errors if the process crashes happen frequently enough for IIS Rapid Fail Protection to disable the application pool - thinking that the application cannot be recovered from this frequent crashes because it happens a lot and deciding to just stop the application.
+
+<b>Running as a stand-alone application</b>
 
 If you are running BuggyAmb as a stand-alone application and if there is no tool / process to manage automatic startups you may directly notice the process crash because no one will restart the process once it is crashed and the requests will end up with an error.
 
