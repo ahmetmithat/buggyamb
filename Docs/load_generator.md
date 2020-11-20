@@ -41,3 +41,13 @@ This will give me a lot of time for collecting data.
 <b>Again:</b>
 
 >If, for some reason, you need more requests to test a scenario then there are workarounds: you can open an inPrivate browsing session and can have 6 more concurrent requests. Similarly, you can open one another vendor's browser to have another 6 concurrent request power.
+
+<h3>Testing multiple scenarios at the same time</h3>
+
+You may want to mix different scenarios by sending different requests to different parts of BuggyAmb. Below shows that there are six requests made for different scenarios of BuggyAmb and there is still one request being processed, while the rest five done very slow:
+
+![BuggyAmb Load Generator](Images/load_generator_mixed.png)
+
+Note that I opened an inPrivate browsing session and send requests to slow scenarios before running the above test. As you can see things really get worse when the number of the requests increase.
+
+
