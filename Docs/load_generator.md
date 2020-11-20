@@ -44,10 +44,10 @@ This will give me a lot of time for collecting data.
 
 <h3>Testing multiple scenarios at the same time</h3>
 
-You may want to mix different scenarios by sending different requests to different parts of BuggyAmb. Below shows that there are six requests made for different scenarios of BuggyAmb and there is still one request being processed, while the rest five done very slow:
+You may want to mix different scenarios by sending different requests to different parts of BuggyAmb. Below shows that there are five requests to different scenarios and one ended up with HTTP 500 after ~3 minutes while the others were done with HTTP 200 although the response times were high again:
 
 ![BuggyAmb Load Generator](Images/load_generator_mixed.png)
 
-Note that I opened an inPrivate browsing session and send requests to slow scenarios before running the above test. As you can see things really get worse when the number of the requests increase.
+Note that I opened an inPrivate browsing session and already sent some mixed requests to slow scenarios before running the test above. As you can see things really get worse when the number of the requests increase.
 
 
