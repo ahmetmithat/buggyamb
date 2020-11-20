@@ -16,3 +16,26 @@ Screenshot above tells me that there are two requests for <code>/Problem/NotFoun
 
 <h2>Sample Usage Scenarios</h2>
 
+<h3>Sending bulk requests to one single page</h3>
+
+I often do this to reproduce the problem with the first slow scenario. If you make one request to the first slow scenario then you will see the page loads slow around 7-8 seconds and sometimes faster where there are lots of CPU resources. In this kind of situations where the response times are higher than expected but not long enough the capture data for troubleshooting (e.g.: capturing multiple dumps with some intervals) it may be difficult to start troubleshooting. So we want to have a larger window to capture data if it is possible.
+
+In this scenario, you would notice that the CPU usage increases whenever a response is made and having more requests make it worse. So we want to send multiple requests. We can open new browser tabs and make the requests manually but why not using a tool to automate that? This is where I use Load Generator:
+
+In the sample below I am sending 6 request to the page running the first slow scenario:
+
+![BuggyAmb Load Generator](Images/load_generator_slow1_6requests.png)
+
+This gives me more time to monitor and troubleshoot the problem.
+
+I know there is that 6 concurrent Ajax request limit in browsers but we can still send more than 6 requests (up to 25) to BuggyAmb in Load Generator. I bet you ask this question: what is the point when, say, 15 requests are sent to BuggyAmb if it just sends only 6 requests at one time? That is correct but keep in mind that browser keeps the requests in the queue when there are 6 Ajax requests and it will send the requests one by one whenever a one of the running requests are done. So the tool will keep sending requests to BuggyAmb and that will give you a lot of time for troubleshotting.
+
+The sample below shows that 15 requests are sent to the the tool:
+
+![BuggyAmb Load Generator](Images/load_generator_slow1_15requests.png)
+
+The first six requests seen in the table are sent first and then four of them are done so the next four requests are sent. Since there are six requests running at the moment, the last five requests will be sent in order once there is an available Ajax connection.
+
+<b>Again:</b>
+
+>If, for some reason, you need more requests to test a scenario then there are workarounds: you can open an inPrivate browsing session and can have 6 more concurrent requests. Similarly, you can open one another vendor's browser to have another 6 concurrent request power.
