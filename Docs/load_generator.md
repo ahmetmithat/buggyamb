@@ -1,10 +1,10 @@
 <h1>Experimental "Load Generator"</h1>
 
-"Load Generator" is nothing but some jQuery scripts that can send multiple requests. You can use this tool to send multiple requests to different pages of BuggyAmb:
+"Load Generator" is nothing but some jQuery scripts that can send multiple requests to  different scenarios explained in the <a href="quick_tour.md">quick tour</a>:
 
 ![BuggyAmb Load Generator](Images/load_generator.png)
 
-Just select the page from list and tell how many requests you want to send there and click Request Page. Load Generator will add those requests in the list and show you if those are running or ended up sucessfully or gave an error. Elapsed time will tell how long it took to get the response:
+It is not a rocket science, just select the page/scenario from list and tell how many requests you want to send there and click Request Page. Load Generator will add those requests in the list and show you if those are running or ended up sucessfully or gave an error. Elapsed time will tell how long it took to get the response:
 
 ![BuggyAmb Load Generator](Images/load_generator_in_action.png)
 
