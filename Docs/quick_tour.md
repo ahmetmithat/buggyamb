@@ -69,7 +69,7 @@ In these cases the process will be started automatically once it is crashed.
 
 As a result, the symptoms may not be directly visible for the end users.
 
->When hosted on IIS, you may see <code>HTTP 503 - Service Unavailable</code> errors if the process crashes happen frequently enough for IIS Rapid Fail Protection to disable the application pool - thinking that the application cannot be recovered from this frequent crashes because it happens a lot and deciding to just stop the application.
+>When hosted on IIS, you may see <code>HTTP 503 - Service Unavailable</code> errors if the process crashes frequently enough for <code>IIS Rapid Fail Protection</code> to kick in and disable the application pool - just thinking that the application cannot be recovered from this frequent crashes as it happens one after the other in the "failure interval" defined for the application pool. The the default Rapid Fail Protection setting is "5 crashes in 5 minutes".
 
 <b>Running as a stand-alone application</b>
 
