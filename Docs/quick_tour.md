@@ -163,3 +163,18 @@ However if you keep clicking the same link (or use "Load Generator" to send mult
 
 <h3>Troubleshooting tips for the handled/unhandled exception and the HTTP 404/500 errors</h3>
 
+The <code>handled exception</code> error message seen in the browser is pretty obvious to give you a starting point:
+
+>An exception occured but it is handled: System.IO.DirectoryNotFoundException
+
+Obviously BuggyAmb should be trying to access a directory which is not exist. Since this is a directory, you may want to capture a <b>Process Monitor</b> log to see which directory the process is trying to access to.
+
+This is a good approach and you may even able to see a call stack for the thread accessing to the directory, if you set the correct symbols on Process Monitor. 
+However, this may be difficult to find what you are looking for unless you use filters in Process Monitor and the call stack may not show the managed represantion - you may see the native side only.
+
+You can configure debuggers to capture 1st chance memory dumps if the tools support this. For example, you can use Debug Diagnostic on Windows and configure it to create a dump when a System.IO.DirectoryNotFoundException exception happens.
+
+For the <code>handled exception</code> one, you may first "define" the problem: what is the exception thrown? Then you can use the same approach (creating a 1st chance rule on debugger) to capture dumps. To find the type of the exception thrown you may want to look at the event logs (especially the application event logs). If you cannot see any information, the next step would be to capture a debugger to the process and get the exception names without getting a memory dump. Debug Diagnostic tool on Windows is capable to generate a summary for the exceptions thrown in a process. You may try to use profilers to get the same information.
+
+For the <code>not found</code> one: this page randomly responds with HTTP 404 and HTTP 500. You may want to take action just like you do for the exceptions and check the event logs or attach a debugger. If you are hosting BuggyAmb on IIS then you have a powerful tool: Failed Request Tracing (FREB). You may want to create a FREB rule and look at the report. Note that the FREB can be configured to create a memory dump when it is triggered.
+
