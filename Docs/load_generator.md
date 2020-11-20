@@ -4,8 +4,13 @@
 
 ![BuggyAmb Load Generator](Images/load_generator.png)
 
-The most important limitation with this tool is the number of the concurrent requests you can make to the BuggyAmb application. Since the tool is based on jQuery Ajax calls, we easily hit the 6 concurrent Ajax call browser limit.
+Just select the page from list and tell how many requests you want to send there and click Request Page. Load Generator will add those requests in the list and show you if those are running or ended up sucessfully or gave an error. Elapsed time will tell how long it took to get the response:
 
+![BuggyAmb Load Generator](Images/load_generator_in_action.png)
 
-However this tool is still quite useful for reproducing the scenarios because most of the times the problems are easy to reproduce for BuggyAmb application. If, for some reason, you need more requests to test a scenario then there are workarounds: you can open an inPrivate browsing session and can have 6 more concurrent requests. Similarly, you can open one another vendor's browser to have another 6 concurrent request power.
+>Important: Elapsed Time is the server time + client time. Remember the 6 concurrent Ajax request limit, if you have more than 6 requests still running in the list then the rest will be waiting on the browser's queue for making the actual call. Elapsed Time also counts those seconds / minutes spent in the browser queue while waiting for an available Ajax connection.
+
+>If, for some reason, you need more requests to test a scenario then there are workarounds: you can open an inPrivate browsing session and can have 6 more concurrent requests. Similarly, you can open one another vendor's browser to have another 6 concurrent request power.
+
+<h2>Sample Usage Scenarios</h2>
 
