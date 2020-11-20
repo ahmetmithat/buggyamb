@@ -36,29 +36,39 @@ Things go weirder if you run the <code>Slow 2</code> or <code>Slow 3</code> scen
 
 <h3>Some tips for troubleshooting...</h3>
 
-If you host BuggyAmb on IIS then you may want to check the event logs first. Do you see any symptom / information about the problem? You may see that the IIS WAS sevice thinks that the process is unhealthy and may see some signs that the process is restarted by WAS service again.
+Although there is a small chance to see a good amount of information in the event logs when you host BuggyAmb on Windows, if you host BuggyAmb on IIS then you may still want to check the event logs first. Because there is a WAS service which manages the process startup and shutdowns and it also montiors the application pools to check if those are healthy and capable to process requests.
 
-You may also want to understand how the requests are slow, or, do they end up with HTTP 200 or do they end up with HTTP 500? If you are on IIS, you have IIS logs or FREB logs, and you can also look at the active running requests by using IIS Manager => Worker Processes window. If you are running BuggyAmb on Linux behind an Nginx or Apache server then you may want to check the web server logs to see how long it takes for the application to process the requests.
+You can open event logs if you run BuggyAmb on Windows and see if there is any symptom / information about the problem. You may see that the IIS WAS sevice thinks that the process is unhealthy and may also see some signs that the process is restarted by WAS service.
+
+You may also want to "define the problem" by understanding how the requests are slow, or, if they end up with successfully (even slowly) with HTTP 200 or if they end up with an error like HTTP 500 status codes. For this, if you are on IIS, you have IIS logs or FREB logs, and you can also look at the active running requests by using IIS Manager => Worker Processes window. If you are running BuggyAmb on Linux behind an Nginx or Apache server then you may want to check the Nginx or Apache logs to see how long it takes for the application to process the requests.
 
 A good approach would also be to check the performance counters to undertstand what is unexpected: is CPU / memory usage high? Are exceptions increasing? Is there any race condition symtpoms? etc...
 
-However all of those information will most probably give you a big picture about the problem but won't tell anything about the root cause of the issue. You may want to troubleshoot these kind of performance issues by analyzing memory dumps or profiler traces.
+A good problem troubleshooting starts with defining problem but all of the above would likely provide you a big picture of the problem but it may not give you a good amount of information about the root cause of the actual problem.
+
+You may want to troubleshoot these kind of performance issues by analyzing memory dumps or profiler traces depending on how the symptoms surface.
 
 <h2>Crash Problem Scenarios</h2>
 
-BuggyAmb is not only slow but also does crash because of different reasons. Because it is buggy. It is actually so buggy that some of the crash scenarios may show different results on different platforms. For example, take the <code>Crash 1</code> scenario: in this scenario the process crashes if I run the application on Windows, BUT, strangely enough, the process "may" crash or hang if I run it on Linux. Of course there should be a reasonable explanation for it - maybe someone can explain this.
+BuggyAmb is not only slow but also does crash because of different reasons. Why? Because it is buggy.
 
-The way you run the BuggyAmb directly affects the symptoms you are seeing with crash scenarios. If you are hosting on IIS then the WAS service will manage the process startup, shutdown and restarts so if a crash happens when hosted on IIS, you may not see the symptoms on browser since the process may be restarted after a crash.
+It is actually so buggy that some of the crash scenarios may show different results on different platforms. For example, take the first <code>Crash 1</code> scenario: in this scenario the process crashes if I run the application on Windows, BUT, strangely enough (at least for me, maybe it is too obvious for some of you), the process "may" crash or "hang" if I run it on Linux. Of course there should be a reasonable explanation for it - feel free to make comments on this.
 
-Similarly, if you are hosting the application on Linux as a service (or daemon?) on Linux then the OS may restart the application after a crash and once again the symptoms may not be directly visible.
+<Symptoms>
+
+The way you run the BuggyAmb directly affects the symptoms you are seeing with crash scenarios. You may be incorrectly assuming that the application works fine and there is no crash because the symptoms of the crash may be hidden from the end users. For example:
+
+* If you are hosting on IIS then the WAS service will manage the process startup, shutdown and restarts so if a crash happens when hosted on IIS, you may not see the symptoms on browser since the process may be restarted so quickly once it crashes that new requests would be handled by new one.
+* Or, there could be multiple instances of the application (e.g.: running on a web farm behind a load balancer, running in a "web garden" scenario on IIS, etc...) and the new requests would be handled by another process.
+* Similarly, if you are hosting the application on Linux as a service (or as a daemon?) on Linux then the OS may restart the application after a crash and once again new request would be handled by new one.
+
+As a result, the symptoms may not be directly visible for the end users.
 
 Note that, when hosted on IIS, you may see <code>HTTP 503 - Service Unavailable</code> errors quickly if crashes happen frequently enough and IIS Rapid Fail Protection kicks in and disables the application pool.
 
 If you are running BuggyAmb as a stand-alone application and if there is no tool / process to manage automatic startups you may directly notice the process crash because no one will restart the process once it is crashed and the requests will end up with an error.
 
-I assumed that the process startups are handled by IIS WAS or OS in the following descriptions.
-
-Let's take a look at the crash scenarios.
+Let's take a look at the crash scenarios. Note that I assumed that the process startups are handled by IIS WAS or OS in the following descriptions.
 
 <h3>Crash Scenario 1</h3>
 
