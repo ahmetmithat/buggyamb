@@ -1,5 +1,7 @@
 <h1>What is BuggyAmb?</h1>
 
+For a quick tour of the application please click here: <a href="Docs/quick_tour.md">Quick Tour</a>
+
 BuggyAmb is just a very buggy ASP.NET Core Razor Pages based application. This application was intentionally created as a buggy application so it can be used as a learning resource to practice troubleshooting some sample problem scenarios:
 
 * High CPU or low CPU performance problems, deadlocks.
@@ -13,7 +15,7 @@ All releases will be here: https://github.com/ahmetmithat/buggyamb/releases/
 * <a href="Docs/windows_installation_instructions.md">Windows Installation Instructions</a>
 * <a href="Docs/linux_installation_instructions.md">Linux Installation Instructions</a>
 
-For a quick tour of the application please click here: <a href="Docs/windows_installation_instructions.md">Quick Tour</a>
+For a quick tour of the application please click here: <a href="Docs/quick_tour.md">Quick Tour</a>
 
 <h2>Very speacial thanks to Tess Ferrandez</h2>
 
