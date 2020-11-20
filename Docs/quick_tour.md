@@ -64,7 +64,9 @@ The way you run the BuggyAmb directly affects the symptoms you are seeing with c
 
 As a result, the symptoms may not be directly visible for the end users.
 
-Note that, when hosted on IIS, you may see <code>HTTP 503 - Service Unavailable</code> errors quickly if crashes happen frequently enough and IIS Rapid Fail Protection kicks in and disables the application pool.
+<code>
+When hosted on IIS, you may see <code>HTTP 503 - Service Unavailable</code> errors if the process crashes happen frequently enough for IIS Rapid Fail Protection to disable the application pool - thinking that the application cannot be recovered from this frequent crashes because it happens a lot and deciding to just stop the application.
+</code>
 
 If you are running BuggyAmb as a stand-alone application and if there is no tool / process to manage automatic startups you may directly notice the process crash because no one will restart the process once it is crashed and the requests will end up with an error.
 
@@ -76,7 +78,7 @@ If you click <code>Crash 1</code> scenario you may confuse it with a performance
 
 ![BuggyAmb Crash Scenario 1](Images/browser_problem_crash_1.png)
 
-Also you may see the following errors if you make requests to any other page when you run this scenario. I made a few requests to home page and the expected results page in new browser tabs after I run this scenario and I eventually ended up with this page:
+Also you may see another symptom and the following error may occur if you make requests to any other page when you run this scenario. I made a few requests to home page and the expected results page in new browser tabs after I run this scenario and I eventually ended up with this page:
 
 ![BuggyAmb Crash Scenario 1 - Connection Reset Error](Images/browser_problem_crash_1_connection_reset_error.png)
 
