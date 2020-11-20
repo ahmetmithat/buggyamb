@@ -133,14 +133,33 @@ Troubleshooting tips are no different than the first scenario. You may want to c
 
 <h2>The other scenarios</h2>
 
-The <code>Handled Exception</code> and <code>Unhandled Exception</code> scenarios are self-explanatory. If you click <code>Handled</code> one you will this:
+The other scenarios should be self self-explanatory. In this release there are three scenarios that you can use:
+
+* Unhandled exceptions
+* Handled exceptions
+* Random HTTP 400 and HTTP 500 errors
+
+Note that if you look at the source code, you will see that the reasons of the above are very obvious. I would like to remind you that the goal of this buggy application is not to teach you how to write code. The goal is to get familiar with some scenarios where you may see some symptoms you would see with real world scenarios. So please use these to practice capturing data and making analysis.
+ 
+<h3>Handled Exception & Unhandled Exception</h3>
+
+If you click <code>Handled Exception</code> you will see this:
 
 ![BuggyAmb Handled Exception](Images/browser_problem_handled_exception.png)
 
-And you will see this if you click the <code>Unhandled</code> one:
+And you will see this if you click the <code>Unhandled Exception</code> one:
 
 ![BuggyAmb Unhandled Exception](Images/browser_problem_unhandled_exception.png)
 
+<h3>Random HTTP 404 and HTTP 500 erros</h3>
 
+If you click <code>Not Found</code> you will see this most of the times:
 
+![BuggyAmb Unhandled Exception](Images/browser_problem_notfound_OK.png)
+
+However if you keep clicking the same link (or use "Load Generator" to send multiple requests to the <code>Not Found</code> page) you will see that it will respond with HTTP 404 or HTTP 500 erros intermittently:
+
+![BuggyAmb Unhandled Exception](Images/browser_problem_notfound_404.png)
+
+<h3>Troubleshooting tips for the handled/unhandled exception and the HTTP 404/500 errors</h3>
 
