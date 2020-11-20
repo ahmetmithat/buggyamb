@@ -69,7 +69,7 @@ In these cases the process will be started automatically once it is crashed.
 
 As a result, the symptoms may not be directly visible for the end users.
 
->When hosted on IIS, you may see <code>HTTP 503 - Service Unavailable</code> errors if the process crashes frequently enough for <code>IIS Rapid Fail Protection</code> to kick in and disable the application pool - just thinking that the application cannot be recovered from this frequent crashes as it happens one after the other in the "failure interval" defined for the application pool. The the default Rapid Fail Protection setting is "5 crashes in 5 minutes".
+>When hosted on IIS, you may see <code>HTTP 503 - Service Unavailable</code> errors if the process crashes frequently enough for <code>IIS Rapid Fail Protection</code> to kick in and disable the application pool - just thinking that the application cannot be recovered from this frequent crashes as it happens one after the other in the "failure interval" defined for the application pool. The default policy for Rapid Fail Protection is "5 crashes in 5 minutes".
 
 <b>Running as a stand-alone application</b>
 
@@ -130,8 +130,6 @@ So to answer the developer's question: that page is not innocent my friend, keep
 This scenario can hide the symptoms from end users easily. You may see that the application is working fine but it may be crashing in the background.
 
 Troubleshooting tips are no different than the first scenario. You may want to confirm the PID changes, check the event logs on Windows or journal logs on Linux, and so on...Again, you may need to capture a crash dump to troubleshoot this issue although in this case the event logs (or journal logs) will give you the reason of the crash. I still recommend you to use a debugger to find the reason of the crash to practice data collection and dump analysis.
-
-
 
 <h2>The other scenarios</h2>
 
