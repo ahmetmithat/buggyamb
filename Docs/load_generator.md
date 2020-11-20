@@ -36,6 +36,8 @@ The sample below shows that 15 requests are sent to the the tool:
 
 The first six requests seen in the table are sent first and then four of them are done so the next four requests are sent. Since there are six requests running at the moment, the last five requests will be sent in order once there is an available Ajax connection.
 
+This will give me a lot of time for collecting data.
+
 <b>Again:</b>
 
 >If, for some reason, you need more requests to test a scenario then there are workarounds: you can open an inPrivate browsing session and can have 6 more concurrent requests. Similarly, you can open one another vendor's browser to have another 6 concurrent request power.
