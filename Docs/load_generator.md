@@ -18,9 +18,9 @@ Screenshot above tells me that there are two requests for <code>/Problem/NotFoun
 
 <h3>Sending bulk requests to one single page</h3>
 
-I often do this to reproduce the problem with the first slow scenario. If you make one request to the first slow scenario then you will see the page loads slow around 7-8 seconds and sometimes faster where there are lots of CPU resources. In this kind of situations where the response times are higher than expected but not long enough the capture data for troubleshooting (e.g.: capturing multiple dumps with some intervals) it may be difficult to start troubleshooting. So we want to have a larger window to capture data if it is possible.
+I often do this to reproduce the problem for the first slow scenario. If you make one request to the first slow scenario then you will see the page loads around 6-7 seconds or sometimes even faster where there are lots of CPU resources. In this kind of situations, where the response times are higher than expected but not long enough for capturing data for troubleshooting (e.g.: capturing multiple dumps with some intervals), it may be difficult to start troubleshooting. So we may want to have a larger window to capture data if it is possible. Of course this may not be possible for some real-world scenarios. However, we can do this "cheat" with BuggyAmb.
 
-In this scenario, you would notice that the CPU usage increases whenever a response is made and having more requests make it worse. So we want to send multiple requests. We can open new browser tabs and make the requests manually but why not using a tool to automate that? This is where I use Load Generator:
+In the first slow scenario, as you may have already noticed, the CPU usage increases whenever a response is made and having more requests make it worse. So we want to send multiple requests. We can open new browser tabs and make the requests manually but why not using a tool to automate that? This is where I use Load Generator:
 
 In the sample below I am sending 6 request to the page running the first slow scenario:
 
@@ -50,4 +50,6 @@ You may want to mix different scenarios by sending different requests to differe
 
 Note that I opened an inPrivate browsing session and already sent some mixed requests to slow scenarios before running the test above. As you can see things really get worse when the number of the requests increase.
 
+>Once again, Load Generator is experimental. It may be buggy than the actual server side code so try to use it within the six request browser limit to avoid confusions around the "elapsed time" seen in the page - remember that the "elapsed time" is the sum of client side and server side time. Of course you are welcome to workaround this limit but make sure that you are also checking the server side logs to make a conclusion for what the actual server side processing time is.
 
+>If you look at the things from brighter side then you can take this limitation to test something else: you can push the limits and then try to find out how much time is spent on the client side and how much time is spent on the server side. You may practice your client side troubleshooting skills while you analyze this. Try to capture a network trace or collect HTTP trace using tools like Fiddler, HttpWatch or browsers' developer toolbars. That would be a really good practice since you may need to check the similar in some real-world scenarios.
