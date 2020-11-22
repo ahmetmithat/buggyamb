@@ -70,7 +70,7 @@ Now you can test if it works. Open a browser and make a request to BuggyAmb, you
 
 Needless to say, "buggyamb" hostname resolves the IP address of my Linux machine and the port 5000 is the port where BuggyAmb listens on.
 
->This should be enough to get started with troubleshooting. You can start playing around problem scenarios and troubleshoot it. For a quick guide for the problematic scenarios and some troubleshooting tips, you can visi the "<a href="quick_tour.md">quick tour</a>".
+>This should be enough to get started with troubleshooting. You can start playing around problem scenarios and troubleshoot it. For a quick guide for the problematic scenarios and some troubleshooting tips, you can visit the <a href="quick_tour.md">quick tour</a>.
 
 <h2>Ensuring BuggyAmb runs always</h2>
 
@@ -105,15 +105,15 @@ WantedBy=multi-user.targe
 
 Just create a <b>buggyamb.service</b> file in <b>/etc/systemd/system</b> directory, copy and paste the lines above in that file. You can use your favorite text editor, such as <b>nano</b> or <b>vi</b>, e.g.: ```sudo vi /etc/systemd/system/buggyamb.service```
 
-Once you create the unit file, reload the daemon configurations so this service will be added in the list:
+Once you create the unit file, reload the daemon configurations so the system knows about this service:
 
 ```sudo systemctl daemon-reload```
 
-Now you are ready to enable the service, start and check if it is running. Enabling a service means that the systemd will be aware of this service so it can start it once the machine is rebooted or the process is crashed. To enable the buggyamb service run this command:
+Now you are ready to enable the service, start and check if it is running. Enabling a service means that the systemd will be aware of this service so it can be started once the machine is rebooted or the process is crashed. To enable the buggyamb service run this command:
 
 ```sudo systemctl enable buggyamb```
 
-Enabling a service does not start it so you need to start it now - don't worry you won't need to run this command once again unless you explicitly stop the service:
+Enabling a service does not start it, so you need to start it now - don't worry you won't need to run this command once again unless you explicitly stop the service:
 
 ```sudo systemctl start buggyamb```
 
@@ -147,12 +147,15 @@ Run the following command to install Nginx:
 
 ```sudo apt-get install nginx```
 
-
 After the installation is completed, make sure that the Nginx works correctly:
 
 ![Linux BuggyAmb Nginx status](Images/linux_nginx_status.png)
 
 > If it is not started you can try ```sudo systemctl start nginx``` or ```sudo service nginx start```. If you are still having trouble installing and running Nginx, please visit the official Nginx installation page: https://www.nginx.com/resources/wiki/start/topics/tutorials/install/
+
+<b>Configuring Nginx to route the requests to BuggyAmb</code>
+
+Nginx is a powerful web server and can be configured to act as a reverse proxy. We can add a "server" block to the configuration file to just tell the Nginx to route the requests to the BuggyAmb application which runs on http://localhost:5000. Following sample routes the requests made to http://buggyamb to http://localhost:5000:
 
 ```
 server {
@@ -170,3 +173,41 @@ server {
     }
 }
 ```
+ >Of course the <b>buggyamb</b> hostname resolves to the IP address of the Linux machine on your client machine. You can simply add the <b>buggyamb</b> in the client's hosts file, or, if you have a DNS server you can update it there.
+ 
+ Just open the ```/etc/nginx/sites-available/default``` file and add the server block above. After saving the changes, make sure that the Nginx configuration is correct by running ```sudo nginx -t``` command. You should see "configuration test is successfull" message: 
+
+![Linux BuggyAmb Nginx test](Images/linux_nginx_test.png)
+
+>If you are seeing an error then you probably made a mistake when adding the server block in previous step. Roll back from the configuration backup of Nginx and try again (what? you didn't take a backup before configuration change? You didn't take it because I didn't tell you take it? You are so brave, always take a backup before making an important change - luckily this is not a critical change and I bet you can fix it :smiley:).
+
+Once the Nginx is configured correctly, let the Nginx to read the configuration changes by running ```sudo nginx -s reload``` command.
+
+<b>Testing</b> 
+
+You configured Nginx and it is time for a test. I recommend you to make a connection test using <code>curl</code> directly on the Linux server. The goal with this test is to make sure everything works fine locally.
+
+>curl just makes an HTTP get request to the destination and it just shows the result in plain text which is the HTML of the response.
+
+ First you need to configure the hosts file so the <b>buggyamb</b> hostname resolves to <b>127.0.0.1</b>. Add <b>buggyamb</b> in ```/etc/hosts``` file so it resolves to 127.0.0.1. You can use <b>vi</b> or <b>nano</b> again.
+
+Then run ```curl localhost``` command. Nginx should get the request and show its welcome page because we configured Nginx to route the requests to BuggyAmb if only the hostname is <b>buggyamb</b> and this request is not made to <b>buggyamb</b>, it is made to <b>localhost</b>:
+
+![Linux curl test](Images/linux_curl_test_localhost.png)
+
+Now run ```curl buggyamb``` command.  This time we make the request with <b>buggyamb</b> hostname so if Nginx is configured correctly, it should route the request to the BuggyAmb application running on port 5000. You should see the HTML of BuggyAmb Welcome Page:
+
+![Linux curl test](Images/linux_curl_test.png)
+
+>If all working, good. If not working, I recommend you to go through the steps above to solve it. There are really great articles on the Internet, if you cannot solve it, search it in the Internet. If you still cannot find your answer feel free to ask your questions here in the comments.
+
+If everything is working fine, then try to access BuggyAmb from your client machine. If you cannot get the page and get "page cannot be displayed" error, I would recommend you to make sure buggyamb hostname is resolving to the IP address of your Linux machine first. If it is correct then it may be a firewall issue, see the next step.
+
+<b>Configuring Linux firewall</b>
+
+```iptables``` could be blocking the HTTP requests. Configuring iptables could be an easy task for Linux admins but I found it a bit difficult. Instead I prefer to use <a href="https://firewalld.org/">firewalld</a> which makes it very easy to configure permanent rules. Steps are easy:
+
+* Install firewalld: ```sudo apt install firewalld```
+* Add a permenant HTTP rule: ```firewall-cmd --zone=public --permanent --add-service=http```
+* Reload firewall configuration: ```firewall-cmd --reload```
+
