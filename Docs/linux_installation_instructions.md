@@ -213,6 +213,6 @@ If everything is working fine, then try to access BuggyAmb from your client mach
 
 Now you should be able to access the BuggyAmb hosted on Linux and running behind Nginx:
 
-![Linux browser test](linux_browser_test_success.png)
+![Linux browser test](Images/linux_browser_test_success.png)
 
 Congratulations. You are all done. Now you can start this troubleshooting buggy application.
