@@ -80,10 +80,10 @@ If you host an ASP.NET Core application on IIS, either in-process or out-process
 
 Here is a sample Unit file that you can use:
 
->\[Unit]\
->Description=BuggyAmb ASP.NET Core 3.1\
+`\[Unit]\
+`>`Description=BuggyAmb ASP.NET Core 3.1\
 >\
->\[Service]\
+`>`\[Service]\
 >WorkingDirectory=/var/buggyamb/buggyamb_v1.1\
 >ExecStart= /usr/bin/dotnet /var/buggyamb/buggyamb_v1.1/BuggyAmb.dll\
 >Restart=always\
