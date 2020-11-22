@@ -38,8 +38,7 @@ Note that the command above downloads the first release of BuggyAmb and actually
 
 After the BuggyAmb is downloaded you need to extract the tar.gz file. The file should be downloaded in the current folder you are in when running the <code>wget</code> command and now you need to use <code>tar</code> to extract the file. I chose extracting the all releases under <code>/var/buggyamb</code> directory so I use the following command to extract:
 
->sudo mkdir /var/buggyamb
-<br />
+>sudo mkdir /var/buggyamb \
 >sudo tar -xf buggyamb_v1.1.tar.gz -C /var/buggyamb
 
 The <code>buggyamb_v1.1</code> folder should be created under <code>/var/buggyamb</code>, so the BuggyAmb application files will be in <code>/var/buggyamb/BuggyAmbV1.0</code> folder:
