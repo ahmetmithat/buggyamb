@@ -187,11 +187,11 @@ Once the Nginx is configured correctly, let the Nginx to read the configuration 
 
 <h2>Testing</h2> 
 
-You configured Nginx and it is time for a test. I recommend you to make a connection test using <code>curl</code> directly on the Linux server. The goal with this test is to make sure everything works fine locally.
+You configured Nginx and it is time for a test. First test I'd recommend would be to make a connection test using <code>curl</code> directly on the Linux server. The goal with this test is to make sure that everything works fine locally.
 
->curl just makes an HTTP get request to the destination and it just shows the result in plain text which is the HTML of the response.
+>curl just makes an HTTP get request to the destination and it just shows the result in plain text. So it should show the HTML output of the response.
 
- First you need to configure the hosts file so the <b>buggyamb</b> hostname resolves to <b>127.0.0.1</b>. Add <b>buggyamb</b> in ```/etc/hosts``` file so it resolves to 127.0.0.1. You can use <b>vi</b> or <b>nano</b> again.
+ The first thing you need to configure is the hosts file so the <b>buggyamb</b> hostname resolves to <b>127.0.0.1</b>. Add <b>buggyamb</b> in ```/etc/hosts``` file so it resolves to 127.0.0.1. You can use <b>vi</b> or <b>nano</b> again.
 
 Then run ```curl localhost``` command. Nginx should get the request and show its welcome page because we configured Nginx to route the requests to BuggyAmb if only the hostname is <b>buggyamb</b> and this request is not made to <b>buggyamb</b>, it is made to <b>localhost</b>:
 
@@ -201,19 +201,19 @@ Now run ```curl buggyamb``` command.  This time we make the request with <b>bugg
 
 ![Linux curl test](Images/linux_curl_test.png)
 
->If all working, good. If not working, I recommend you to go through the steps above to solve it. There are really great articles on the Internet, if you cannot solve it, search it in the Internet. If you still cannot find your answer feel free to ask your questions here in the comments.
+>All working? Good. If not working, I'd recommend you to go through the steps above once again, you may be missing something very simple. There are really great articles on the Internet, if you cannot solve it, search for the resolution. Good searcing skills are very useful when troubleshooting problems. If you still cannot find your answer feel free to ask your questions here in the comments, keep in mind that asking questions is one of the necessary steps for troubleshooting. Don't be shy to ask questions.
 
-If everything is working fine, then try to access BuggyAmb from your client machine. If you cannot get the page and get "page cannot be displayed" error, I would recommend you to make sure buggyamb hostname is resolving to the IP address of your Linux machine first. If it is correct then it may be a local firewall issue, so please see the next step.
+If everything is working fine, then try to access BuggyAmb from your client machine. If you cannot get the page and instead you get "page cannot be displayed" or a similar error, it may be either a name resolution or a local firewall problem. I would recommend you to make sure <b>buggyamb</b> hostname is resolving to the IP address of your Linux machine first. If it is correct then go with the next step to configure local firewall to allow HTTP requests coming from remote machines.
 
 <b>Configuring Linux firewall</b>
 
-```iptables``` could be blocking the HTTP requests. Configuring iptables could be an easy task for Linux admins but I found it a bit difficult so I prefer to use <a href="https://firewalld.org/">firewalld</a> which makes it very easy to configure the local firewall with permanent rules. Steps are easy:
+```iptables``` could be blocking the HTTP requests. Configuring iptables could be an easy task for most of the Linux admins but I am not a Linux expert and I found it a bit difficult, so, I prefer to use <a href="https://firewalld.org/">firewalld</a>. It makes it very easy to configure the local firewall with permanent rules. Steps are very easy:
 
 * Install firewalld: ```sudo apt install firewalld```
-* Add a permenant HTTP rule: ```sudo firewall-cmd --zone=public --permanent --add-service=http```
+* Add a permenant rule to allow incoming HTTP requests: ```sudo firewall-cmd --zone=public --permanent --add-service=http```
 * Reload firewall configuration: ```sudo firewall-cmd --reload```
 
-Now you should be able to access the BuggyAmb hosted on Linux and running behind Nginx:
+After you configure the local firewall to allow incoming HTTP requests, try once again. Now you should be able to access the BuggyAmb hosted on Linux and running behind Nginx:
 
 ![Linux browser test](Images/linux_browser_test_success.png)
 
