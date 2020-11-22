@@ -36,7 +36,7 @@ Simply you can run the following <code>wget</code> command to download BuggyAmb 
 
 Note that the command above downloads the first release of BuggyAmb and actually as of now it is the only release available :smiley:
 
-After the BuggyAmb is downloaded you need to extract the tar.gz file. The file should be downloaded in the current folder you are in when running the <code>wget</code> command and now you need to use <code>tar</code> to extract the file. I chose to extract the content to the <code>/var/buggyamb</code>, feel free to change it based on your preferences:
+After the BuggyAmb is downloaded you need to extract the tar.gz file. The file should be downloaded in the current folder you are in when running the <code>wget</code> command and now you need to use <code>tar</code> to extract the file. I chose extracting the content to the <code>/var/buggyamb</code> directory, feel free to change it based on your preferences:
 
 >sudo mkdir /var/buggyamb
 >sudo tar -xf BuggyAmbV1.0.tar.gz -C /var/buggyamb
@@ -45,3 +45,29 @@ The <code>BuggyAmbV1.0</code> folder should be created under <code>/var/buggyamb
 
 ![Linux extract files](Images/linux_extract_files.png)
 
+<h2>How to run BuggyAmb</h2>
+
+The first release of BuggyAmb runs over HTTP. If you need to configure it to run on HTTPS then you can download the source code and make the necessary changes based on your needs. 
+
+You need to run BuggyAmb as a standalone application in Linux, there is no "in-process" hosting model for ASP.NET Core applications in Linux unlike what IIS offers when run on Windows.
+
+To run the BuggyAmb you need to can run the following command:
+
+
+
+<p><hr /></p>
+
+So or you can run it behdind Nginx or Apache web server. Even if you want to run it behind Nginx or Apache, you will still need to run the actual BuggyAmb as a stand-alone application on Linux because 
+
+ unlike IIS hosting, just like you would host it on IIS when running on Windows.
+
+Running as stand alone application is very easy and actually it is the only way  You do not need to deal with installing and configuring the Nginx or Apache. Even if you want to run  In this scenario the BuggyAmb application will run in Kestrel web server implementation to listen on port 5000 to accept the HTTP requests.
+
+
+* When you run as stand alone, you will need to manage to start BuggyAmb once it stops / crashes.
+* Hosting on IIS is usually the preferred way for several people in real world scenarios where the OS is Windows so if you want more close environment to real world scenarios you should choose hosting on IIS.
+* IIS (actually the WAS service) will manage the process startups so if BuggyAmb crashes then IIS will start it without you to take action (unless the application is pool is disabled due to Rapid Fail Protection) if you host on IIS.
+
+So make your choice, it is all up to you.
+
+<h3>Running BuggyAmb as a standalone application (no web server is needed)</h3>
