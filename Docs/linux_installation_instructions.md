@@ -7,7 +7,7 @@
 
 <h2>.NET Core version</h2>
 
-BuggyAmb is an ASP.NET Core <code>framework-dependent</code> application so it means that the correct version of ASP.NET Core runtime should be installed on your machine.
+BuggyAmb is an ASP.NET Core <b>framework-dependent</b> application so it means that the correct version of ASP.NET Core runtime should be installed on your machine.
 
 The main reason for not publishing BuggyAmb as a self-contained application is simple: the size of the package will be much higher than the framework-dependent one when it is deployed as self-contained application because the required .NET Core libraries will also be included in the deployment package. If you want to deploy BuggyAmb as a self-contained application then you can download the source code and publish like that.
 
@@ -26,26 +26,26 @@ sudo apt-get update &&
 sudo apt-get install -y <b>dotnet-sdk-3.1</b>
 ```
 
-And here is the <code>dotnet --info</code> output:
+And here is the ```dotnet --info``` output:
 
 ![Linux dotnet --info output](Images/linux_dotnet_info.png)
 
 <h2>Downloading the BuggyAmb in Linux</h2>
 
-Simply you can run the following <code>wget</code> command to download BuggyAmb bits on your Linux machine:
+Simply you can run the following <b>wget</b> command to download BuggyAmb bits on your Linux machine:
 
 ```wget https://github.com/ahmetmithat/buggyamb/releases/download/v1.1/buggyamb_v1.1.tar.gz```
 
 Note that the command above downloads the first release of BuggyAmb and actually as of now it is the only release available :smiley:
 
-After the BuggyAmb is downloaded you need to extract the tar.gz file. The file should be downloaded in the current folder you are in when running the <code>wget</code> command and now you need to use <code>tar</code> to extract the file. I chose extracting the all releases under <code>/var/buggyamb</code> directory so I use the following command to extract:
+After the BuggyAmb is downloaded you need to extract the tar.gz file. The file should be downloaded in the current folder you are in when running the <b>wget</b> command and now you need to use <b>tar</b> to extract the file. I chose extracting the all releases under <b>/var/buggyamb</b> directory so I use the following command to extract:
 
 ```
 sudo mkdir /var/buggyamb
 sudo tar -xf buggyamb_v1.1.tar.gz -C /var/buggyamb
 ```
 
-The <code>buggyamb_v1.1</code> folder should have been created under <code>/var/buggyamb</code>:
+The <b>buggyamb_v1.1</b> folder should have been created under <b>/var/buggyamb</b>:
 
 ![Linux extract files](Images/linux_extract_files.png)
 
@@ -57,7 +57,7 @@ You need to run BuggyAmb as a standalone application in Linux, there is no "in-p
 
 To run BuggyAmb on Linux:
 
-* Change directory to where BuggyAmb is extracted. In my case I change the directory to <code>/var/buggyamb/buggyamb_v1.1</code>
+* Change directory to where BuggyAmb is extracted. In my case I change the directory to <b>/var/buggyamb/buggyamb_v1.1</b>
 * And run the following command: ```dotnet BuggyAmb.dll```
 
 You should see that the application is listening on port 5000 for HTTP requests:
@@ -74,13 +74,13 @@ Needless to say, "buggyamb" hostname resolves the IP address of my Linux machine
 
 <h2>Ensuring BuggyAmb runs always</h2>
 
-So far, if you are able to access the home page of BuggyAmb, then you are ready to start with troubleshooting. However if you restart the Linux machine or BuggyAmb crashes (and believe it is a buggy application and it crashes a lot), then you should start it manually by running the <code>dotnet BuggyAmb.dll</code> command. In a real world scenario you want applications to start automatically after a crash or reboot.
+So far, if you are able to access the home page of BuggyAmb, then you are ready to start with troubleshooting. However if you restart the Linux machine or BuggyAmb crashes (and believe it is a buggy application and it crashes a lot), then you should start it manually by running the ```dotnet BuggyAmb.dll``` command. In a real world scenario you want applications to start automatically after a crash or reboot.
 
-If you host an ASP.NET Core application on IIS, either in-process or out-process, IIS manages the process startups. In Linux, you can use <code>systemd</code> to manage the same. As described in https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/linux-nginx?view=aspnetcore-3.1;
+If you host an ASP.NET Core application on IIS, either in-process or out-process, IIS manages the process startups. In Linux, you can use <b>systemd</b> to manage the same. As described in https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/linux-nginx?view=aspnetcore-3.1;
 
  >systemd is an init system that provides many powerful features for starting, stopping, and managing processes.
 
-<code>systemd</code> will use a service/unit file to manage an application. This is similar to the service concept in Windows and is called <code>daemons</code> in Linux world. The unit files are located in <code>/etc/systemd/system</code> directory.
+<b>systemd</b> will use a service/unit file to manage an application. This is similar to the service concept in Windows and is called <b>daemons</b> in Linux world. The unit files are located in <b>/etc/systemd/system</b> directory.
 
 Here is a sample Unit file that you can use:
 
@@ -103,9 +103,7 @@ Environment=ASPNETCORE_ENVIRONMENT=Production
 WantedBy=multi-user.targe
 ```
 
-Just create <code>buggyamb.service</code> file in <code>/etc/systemd/system</code> directory, copy and paste the lines above in that file. You can use your favorite text editor, such as <code>nano</code> or <code>vi</code>, e.g.:
-
-```sudo vi /etc/systemd/system/buggyamb.service```
+Just create a <b>buggyamb.service</b> file in <b>/etc/systemd/system</b> directory, copy and paste the lines above in that file. You can use your favorite text editor, such as <b>nano</b> or <b>vi</b>, e.g.: ```sudo vi /etc/systemd/system/buggyamb.service```
 
 Once you create the unit file, reload the daemon configurations so this service will be added in the list:
 
@@ -123,13 +121,13 @@ Now check if the service is started:
 
 ```sudo systemctl status buggyamb```
 
-You should see the service is <code>active (running)</code>:
+You should see the service is <b>active (running)</b>:
 
 ![Linux BuggyAmb service status](Images/linux_systemctl_status_buggyamb.png)
 
-The process ID is an important information here because you will need that PID when you trobleshoot BuggyAmb application. You can get the same process ID using other tools like <code>top</code> or <code>htop</code> easily.
+The process ID is an important information here because you will need that PID when you trobleshoot BuggyAmb application. You can get the same process ID using other tools like <b>top</b> or <b>htop</b> easily.
 
->If you are having problem with running the service, please make sure the unit file is correct. You should update <code>WorkingDirectory</code> and <code>ExecStart</code> parameters accordingly if you run the BuggyAmb in a directory other than <code>/var/buggyamb/buggyamb_v1.1</code>. If those are correct but it still does not correct than you may want to check the "journal" logs by running this command: <code>sudo journalctl -fu buggyamb.service</code>
+>If you are having problem with running the service, please make sure the unit file is correct. You should update <b>WorkingDirectory</b> and <b>ExecStart</b> parameters accordingly if you run the BuggyAmb in a directory other than <b>/var/buggyamb/buggyamb_v1.1</b>. If those are correct but it still does not correct than you may want to check the "journal" logs by running this command: <b>sudo journalctl -fu buggyamb.service</b>
 
 Now BuggyAmb is ready to restart if it crashes or if the machine is rebooted.
 
@@ -154,7 +152,7 @@ After the installation is completed, make sure that the Nginx works correctly:
 
 ![Linux BuggyAmb Nginx status](Images/linux_nginx_status.png)
 
-> If it is not started you can try <code>sudo systemctl start nginx</code> or <code>sudo service nginx start</code>. If you are still having trouble installing and running Nginx, please visit the official Nginx installation page: https://www.nginx.com/resources/wiki/start/topics/tutorials/install/
+> If it is not started you can try ```sudo systemctl start nginx``` or ```sudo service nginx start```. If you are still having trouble installing and running Nginx, please visit the official Nginx installation page: https://www.nginx.com/resources/wiki/start/topics/tutorials/install/
 
 ```
 server {
