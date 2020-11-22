@@ -205,7 +205,7 @@ Now run ```curl buggyamb``` command.  This time we make the request with <b>bugg
 
 If everything is working fine, then try to access BuggyAmb from your client machine. If you cannot get the page and instead you get "page cannot be displayed" or a similar error, it may be either a name resolution or a local firewall problem. I would recommend you to make sure <b>buggyamb</b> hostname is resolving to the IP address of your Linux machine first. If it is correct then go with the next step to configure local firewall to allow HTTP requests coming from remote machines.
 
-<b>Configuring Linux firewall</b>
+<h3>Configuring Linux firewall</h3>
 
 ```iptables``` could be blocking the HTTP requests. Configuring iptables could be an easy task for most of the Linux admins but I am not a Linux expert and I found it a bit difficult, so, I prefer to use <a href="https://firewalld.org/">firewalld</a>. It makes it very easy to configure the local firewall with permanent rules. Steps are very easy:
 
