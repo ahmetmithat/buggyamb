@@ -165,3 +165,7 @@ After the installation is completed, make sure that the Nginx works correctly:
 >    }\
 >}
 
+```javascript
+var s = "JavaScript syntax highlighting";
+alert(s);
+```
