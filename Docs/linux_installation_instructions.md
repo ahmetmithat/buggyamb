@@ -143,7 +143,7 @@ This article explains how you can configure Nginx as a reverse proxy server: htt
 
 Run the following command to install Nginx:
 
-```sudo apt-get install nginx
+```sudo apt-get install nginx```
 
 
 After the installation is completed, make sure that the Nginx works correctly:
