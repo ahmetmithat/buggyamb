@@ -76,26 +76,26 @@ If you host an ASP.NET Core application on IIS, either in-process or out-process
 
  >systemd is an init system that provides many powerful features for starting, stopping, and managing processes.
 
-<code>systemd</code> will use a <code>service file</code> (or <code>unit file</code>) to manage an application. This is similar to the service concept in Windows and is called "<code>daemons</code>" in Linux world. The unit files are located in <code>/etc/systemd/system</code> directory.
+<code>systemd</code> will use a service/unit file to manage an application. This is similar to the service concept in Windows and is called <code>daemons</code> in Linux world. The unit files are located in <code>/etc/systemd/system</code> directory.
 
 Here is a sample Unit file that you can use:
 
->\[Unit]
->Description=BuggyAmb ASP.NET Core 3.1
->
->\[Service]
->WorkingDirectory=/var/buggyamb/buggyamb_v1.1
->ExecStart= /usr/bin/dotnet /var/buggyamb/buggyamb_v1.1/BuggyAmb.dll
->Restart=always
->\# Restart service after 10 seconds if the dotnet service crashes:
->RestartSec=10
->KillSignal=SIGINT
->SyslogIdentifier=BuggyAmb
->User=www-data
->Environment=ASPNETCORE_ENVIRONMENT=Production
->
->\[Install]
->WantedBy=multi-user.target
+>\[Unit]\
+>Description=BuggyAmb ASP.NET Core 3.1\
+>\
+>\[Service]\
+>WorkingDirectory=/var/buggyamb/buggyamb_v1.1\
+>ExecStart= /usr/bin/dotnet /var/buggyamb/buggyamb_v1.1/BuggyAmb.dll\
+>Restart=always\
+>\# Restart service after 10 seconds if the dotnet service crashes:\
+>RestartSec=10\
+>KillSignal=SIGINT\
+>SyslogIdentifier=BuggyAmb\
+>User=www-data\
+>Environment=ASPNETCORE_ENVIRONMENT=Production\
+>\
+>\[Install]\
+>WantedBy=multi-user.target\
 </code>
 
 Just create <code>buggyamb.service</code> file in <code>/etc/systemd/system</code> directory, copy and paste the lines above in that file. You can use your favorite text editor, such as <code>nano</code> or <code>vi</code>:
