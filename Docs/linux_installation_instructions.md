@@ -185,7 +185,7 @@ server {
 
 Once the Nginx is configured correctly, let the Nginx to read the configuration changes by running ```sudo nginx -s reload``` command.
 
-<b>Testing</b> 
+<h2>Testing</h2> 
 
 You configured Nginx and it is time for a test. I recommend you to make a connection test using <code>curl</code> directly on the Linux server. The goal with this test is to make sure everything works fine locally.
 
