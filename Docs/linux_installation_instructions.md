@@ -19,12 +19,10 @@ If you don't have ASP.NET Core 3.1 runtime or SDK on your machine then you can f
 
 I have installed the .NET Core 3.1 SDK on Ubuntu 18.04 by following the instructions on https://docs.microsoft.com/en-us/dotnet/core/install/linux-ubuntu#1804 and replacing the dotnet-sdk-5.0 with dotnet-sdk-3.1:
 
-<code>
-sudo apt-get update; \
-  sudo apt-get install -y apt-transport-https && \
-  sudo apt-get update && \
-  sudo apt-get install -y <b>dotnet-sdk-3.1</b>
-</code>
+>sudo apt-get update; \
+>  sudo apt-get install -y apt-transport-https && \
+>  sudo apt-get update && \
+>  sudo apt-get install -y <b>dotnet-sdk-3.1</b>
 
 And here is the <code>dotnet --info</code> output:
 
