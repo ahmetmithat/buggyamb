@@ -137,9 +137,11 @@ If you are not like "enough, I am done!" yet, there are some other things to do 
 
 Just like the previous "Ensuring BuggyAmb runs always" section, this one is not a requirement to get started, but...But, if you are like me you will probably want an environment as close to a real-world scenario as possible, and that port number at the hostname (:5000) will bother you: why not making requests like http://buggybits/Problem instead of http://buggybits:5000/Problem, right?
 
-The idea is very simple, Nginx will listen on port 80 and act as a reverse proxy server and send the requests to BuggyAmb application which listens on port 5000.
+The idea is very simple, Nginx will listen on port 80 and act as a reverse proxy server, and it will send the requests to the BuggyAmb application which listens on port 5000. So, our lovely clients won't have to remember that port number and instead they will just use the hostname. Lovely.
 
-This article explains how you can configure Nginx as a reverse proxy server: https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/linux-nginx?view=aspnetcore-3.1. Let's quickly go through the steps:
+This article explains how you can configure Nginx as a reverse proxy server: https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/linux-nginx?view=aspnetcore-3.1.
+
+Let's quickly go through the steps:
 
 <b>Installing Nginx</b>
 
