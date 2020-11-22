@@ -144,7 +144,9 @@ Run the following command to install Nginx:
 
 >sudo apt-get install nginx
 
-![Linux Nginx installation](Images/linux_install_nginx.png)
+After the installation is completed, make sure that the Nginx works correctly:
 
->If you are having trouble installing Nginx, please visit the official Nginx installation page: https://www.nginx.com/resources/wiki/start/topics/tutorials/install/
+![Linux BuggyAmb Nginx status](Images/linux_install_nginx.png)
+
+If you are having trouble installing Nginx, please visit the official Nginx installation page: https://www.nginx.com/resources/wiki/start/topics/tutorials/install/
 
