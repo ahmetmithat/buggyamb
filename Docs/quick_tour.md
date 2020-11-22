@@ -174,7 +174,7 @@ Obviously BuggyAmb should be trying to access a directory which is not exist. Si
 This is a good approach and you may even able to see a call stack for the thread accessing to the directory, if you set the correct symbols on Process Monitor. 
 However, this may be difficult to find what you are looking for unless you use filters in Process Monitor and the call stack may not show the managed represantion - you may see the native side only.
 
-You can configure debuggers to capture 1st chance memory dumps if the tools support this. For example, you can use Debug Diagnostic on Windows and configure it to create a dump when a System.IO.DirectoryNotFoundException exception happens.
+You can configure debuggers to capture 1st chance memory dumps if the tools support this. For example, you can use Debug Diagnostic on Windows and configure it to create a dump when a <code>System.IO.DirectoryNotFoundException</code> exception happens.
 
 <b>Unhandled Exception</b>
 
@@ -182,7 +182,9 @@ For the <code>Handled Exception</code> one, you may first "define" the problem: 
 
 <b>Random HTTP 404 and HTTP 500 errors</b>
 
-The <code>Not Found</code> page randomly responds with HTTP 404 and HTTP 500. You may want to take action just like you do for the exceptions and check the event logs or attach a debugger. If you are hosting BuggyAmb on IIS then you have a powerful tool: Failed Request Tracing (FREB). You may want to create a FREB rule and look at the report. Note that the FREB can be configured to create a memory dump when it is triggered.
+The <code>Not Found</code> page randomly responds with HTTP 404 and HTTP 500. You may want to take action just like you do for the exceptions and check the event logs or attach a debugger.
+
+If you are hosting BuggyAmb on IIS then you have a powerful tool: <code>Failed Request Tracing (FREB)</code>. You may want to create a FREB rule and look at the report. Note that the FREB can be configured to create a memory dump when it is triggered.
 
 <h1>Experimental "Load Generator"</h1>
 
