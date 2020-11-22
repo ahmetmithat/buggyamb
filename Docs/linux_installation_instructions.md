@@ -122,9 +122,29 @@ You should see the service is <code>active (running)</code>:
 
 ![Linux BuggyAmb service status](Images/linux_systemctl_status_buggyamb.png)
 
->The process ID is an important information here because you will need that PID when you trobleshoot BuggyAmb application. You can get the same process ID using other tools like <code>top</code> or <code>htop</code> easily.
+The process ID is an important information here because you will need that PID when you trobleshoot BuggyAmb application. You can get the same process ID using other tools like <code>top</code> or <code>htop</code> easily.
+
+>If you are having problem with running the service, please make sure the unit file is correct. You should update <code>WorkingDirectory</code> and <code>ExecStart</code> parameters accordingly if you run the BuggyAmb in a directory other than <code>/var/buggyamb/buggyamb_v1.1</code>. If those are correct but it still does not correct than you may want to check the "journal" logs by running this command: <code>sudo journalctl -fu buggyamb.service</code>
 
 Now BuggyAmb is ready to restart if it crashes or if the machine is rebooted.
 
-<h2>Getting rid of port 5000: running BuggyAmb behind Nginx</h2>
+<h2>Getting rid of port 5000 - running BuggyAmb behind Nginx</h2>
+
+If you are not like "enough, I am done!" yet, there are some other things to do if you want.
+
+Just like the previous "Ensuring BuggyAmb runs always" section, this one is not a requirement to get started, but...But, if you are like me you will probably want an environment as close to a real-world scenario as possible, and that port number at the hostname (:5000) will bother you: why not making requests like http://buggybits/Problem instead of http://buggybits:5000/Problem, right?
+
+The idea is very simple, Nginx will listen on port 80 and act as a reverse proxy server and send the requests to BuggyAmb application which listens on port 5000.
+
+This article explains how you can configure Nginx as a reverse proxy server: https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/linux-nginx?view=aspnetcore-3.1. Let's quickly go through the steps:
+
+<b>Install Nginx</b>
+
+Run the following command to install Nginx:
+
+>sudo apt-get install nginx
+
+![Linux Nginx installation](Images/linux_install_nginx.png)
+
+>If you are having trouble installing Nginx, please visit the official Nginx installation page: https://www.nginx.com/resources/wiki/start/topics/tutorials/install/
 
