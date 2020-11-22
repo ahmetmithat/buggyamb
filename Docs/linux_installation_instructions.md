@@ -146,7 +146,7 @@ Run the following command to install Nginx:
 
 After the installation is completed, make sure that the Nginx works correctly:
 
-![Linux BuggyAmb Nginx status](Images/linux_install_nginx.png)
+![Linux BuggyAmb Nginx status](Images/linux_nginx_status.png)
 
 If you are having trouble installing Nginx, please visit the official Nginx installation page: https://www.nginx.com/resources/wiki/start/topics/tutorials/install/
 
