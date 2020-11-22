@@ -151,7 +151,7 @@ And you will see this if you click the <code>Unhandled Exception</code> one:
 
 ![BuggyAmb Unhandled Exception](Images/browser_problem_unhandled_exception.png)
 
-<h3>Random HTTP 404 and HTTP 500 erros</h3>
+<h3>Random HTTP 404 and HTTP 500 errors</h3>
 
 If you click <code>Not Found</code> you will see this most of the times:
 
