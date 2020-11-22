@@ -95,7 +95,7 @@ Here is a sample Unit file that you can use:
 >Environment=ASPNETCORE_ENVIRONMENT=Production\
 >\
 >\[Install]\
->WantedBy=multi-user.target\
+>WantedBy=multi-user.target
 </code>
 
 Just create <code>buggyamb.service</code> file in <code>/etc/systemd/system</code> directory, copy and paste the lines above in that file. You can use your favorite text editor, such as <code>nano</code> or <code>vi</code>:
