@@ -194,6 +194,6 @@ But there is one thing:
 
 >You can use this tool to send multiple requests to different pages of BuggyAmb but there is one important limitation: browsers can send maximum 6 concurrent Ajax requests to a unique endpoint in one session.
 
-However this tool is still quite useful for reproducing the scenarios because most of the times the problems are very easy to reproduce for BuggyAmb application. If, for some reason, you need more requests to test a scenario then there are workarounds: you can open an inPrivate browsing session and can have 6 more concurrent requests. Similarly, you can open one another vendor's browser to have another 6 concurrent request power.
+However this tool is still quite useful for reproducing the scenarios because most of the times the problems are very easy to reproduce for BuggyAmb application. If, for some reason, you need more requests to test a scenario then there may be workarounds such as opening an inPrivate browsing session to have six more concurrent requests. 
 
-For more information about the usage scenarios of Load Generator, please click <a href="load_generator.md">here</a>.
+For more information about Load Generator, please click <a href="load_generator.md">here</a>. You will find some recommendations about how to use it to run different scenarios easily.
