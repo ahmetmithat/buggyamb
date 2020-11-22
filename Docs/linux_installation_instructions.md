@@ -41,7 +41,7 @@ After the BuggyAmb is downloaded you need to extract the tar.gz file. The file s
 >sudo mkdir /var/buggyamb \
 >sudo tar -xf buggyamb_v1.1.tar.gz -C /var/buggyamb
 
-The <code>buggyamb_v1.1</code> folder should be created under <code>/var/buggyamb</code>, so the BuggyAmb application files will be in <code>/var/buggyamb/BuggyAmbV1.0</code> folder:
+The <code>buggyamb_v1.1</code> folder should have been created under <code>/var/buggyamb</code>:
 
 ![Linux extract files](Images/linux_extract_files.png)
 
@@ -51,9 +51,41 @@ The first release of BuggyAmb runs over HTTP. If you need to configure it to run
 
 You need to run BuggyAmb as a standalone application in Linux, there is no "in-process" hosting model for ASP.NET Core applications in Linux unlike what IIS offers when run on Windows.
 
-To run the BuggyAmb you need to can run the following command:
+To run BuggyAmb on Linux:
 
+* Change directory to where BuggyAmb is extracted. In my case I change the directory to <code>/var/buggyamb/buggyamb_v1.1</code>
+* And run the following command: <code>dotnet BuggyAmb.dll</code>
 
+You should see that the application is listening on port 5000 for HTTP requests:
+
+![Linux BuggyAmb running](Images/linux_dotnet_run.png)
+
+<h2>Ensuring BuggyAmb to run always</h2>
+
+If the machine restarts or the BuggyAmb crashes then you should run it manually. This is of course not what we want. We want to make sure that BuggyAmb is started if it crashes or the machine is restarted so we can use a <code>Unit</code> file as described in https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/linux-nginx?view=aspnetcore-3.1.
+
+Here is a sample Unit file that you can use:
+
+<code>
+[Unit]
+Description=BuggyAmb ASP.NET Core 3.1
+
+[Service]
+WorkingDirectory=/var/buggyamb/buggyamb_v1.1
+ExecStart= /usr/bin/dotnet /var/buggyamb/buggyamb_v1.1/BuggyAmb.dll
+Restart=always
+# Restart service after 10 seconds if the dotnet service crashes:
+RestartSec=10
+KillSignal=SIGINT
+SyslogIdentifier=BuggyAmb
+User=www-data
+Environment=ASPNETCORE_ENVIRONMENT=Production
+
+[Install]
+WantedBy=multi-user.target
+</code>
+
+Create a file with the contents above 
 
 <p><hr /></p>
 
