@@ -150,3 +150,19 @@ After the installation is completed, make sure that the Nginx works correctly:
 
 > If it is not started you can try <code>sudo systemctl start nginx</code> or <code>sudo service nginx start</code>. If you are still having trouble installing and running Nginx, please visit the official Nginx installation page: https://www.nginx.com/resources/wiki/start/topics/tutorials/install/
 
+<code>
+server {
+    listen        80;
+    server_name   example.com *.example.com;
+    location / {
+        proxy_pass         http://localhost:5000;
+        proxy_http_version 1.1;
+        proxy_set_header   Upgrade $http_upgrade;
+        proxy_set_header   Connection keep-alive;
+        proxy_set_header   Host $host;
+        proxy_cache_bypass $http_upgrade;
+        proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header   X-Forwarded-Proto $scheme;
+    }
+}
+</code>
