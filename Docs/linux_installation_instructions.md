@@ -141,7 +141,7 @@ The idea is very simple, Nginx will listen on port 80 and act as a reverse proxy
 
 This article explains how you can configure Nginx as a reverse proxy server: https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/linux-nginx?view=aspnetcore-3.1. Let's quickly go through the steps:
 
-<b>Install Nginx</b>
+<b>Installing Nginx</b>
 
 Run the following command to install Nginx:
 
@@ -153,7 +153,7 @@ After the installation is completed, make sure that the Nginx works correctly:
 
 > If it is not started you can try ```sudo systemctl start nginx``` or ```sudo service nginx start```. If you are still having trouble installing and running Nginx, please visit the official Nginx installation page: https://www.nginx.com/resources/wiki/start/topics/tutorials/install/
 
-<b>Configuring Nginx to route the requests to BuggyAmb</code>
+<b>Configuring Nginx to route the requests to BuggyAmb</b>
 
 Nginx is a powerful web server and can be configured to act as a reverse proxy. We can add a "server" block to the configuration file to just tell the Nginx to route the requests to the BuggyAmb application which runs on http://localhost:5000. Following sample routes the requests made to http://buggyamb to http://localhost:5000:
 
