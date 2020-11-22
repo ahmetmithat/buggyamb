@@ -60,9 +60,23 @@ You should see that the application is listening on port 5000 for HTTP requests:
 
 ![Linux BuggyAmb running](Images/linux_dotnet_run.png)
 
-<h2>Ensuring BuggyAmb to run always</h2>
+Now you can test if it works. Open a browser and make a request to BuggyAmb, you should see the BuggyAmb Welcome Page:
 
-If the machine restarts or the BuggyAmb crashes then you should run it manually. This is of course not what we want. We want to make sure that BuggyAmb is started if it crashes or the machine is restarted so we can use a <code>Unit</code> file as described in https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/linux-nginx?view=aspnetcore-3.1.
+![Linux BuggyAmb running](Images/browser_test_linux.png)
+
+Needless to say, "buggyamb" hostname resolves the IP address of my Linux machine and the port 5000 is the port where BuggyAmb listens on.
+
+>This should be enough to get started with troubleshooting. You can start playing around problem scenarios and troubleshoot it. For a quick guide for the problematic scenarios and some troubleshooting tips, you can visi the "<a href="quick_tour.md">quick tour</a>".
+
+<h2>Ensuring BuggyAmb runs always</h2>
+
+So far, if you are able to access the home page of BuggyAmb, then you are ready to start with troubleshooting. However if you restart the Linux machine or BuggyAmb crashes (and believe it is a buggy application and it crashes a lot), then you should start it manually by running the <code>dotnet BuggyAmb.dll</code> command. In a real world scenario you want applications to start automatically after a crash or reboot.
+
+If you host an ASP.NET Core application on IIS, either in-process or out-process, IIS manages the process startups. In Linux, you can use <code>systemd</code> to manage the same. As described in https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/linux-nginx?view=aspnetcore-3.1;
+
+ >systemd is an init system that provides many powerful features for starting, stopping, and managing processes.
+
+<code>systemd</code> will use a <code>service file</code> (or <code>unit file</code>) to manage an application. This is similar to the service concept in Windows and is called "<code>daemons</code>" in Linux world. The unit files are located in <code>/etc/systemd/system</code> directory.
 
 Here is a sample Unit file that you can use:
 
@@ -85,21 +99,31 @@ Environment=ASPNETCORE_ENVIRONMENT=Production
 WantedBy=multi-user.target
 </code>
 
-Create a file with the contents above 
+Just create <code>buggyamb.service</code> file in <code>/etc/systemd/system</code> directory, copy and paste the lines above in that file. You can use your favorite text editor, such as <code>nano</code> or <code>vi</code>:
 
-<p><hr /></p>
+>sudo nano /etc/systemd/system/buggyamb.service
 
-So or you can run it behdind Nginx or Apache web server. Even if you want to run it behind Nginx or Apache, you will still need to run the actual BuggyAmb as a stand-alone application on Linux because 
+or,
 
- unlike IIS hosting, just like you would host it on IIS when running on Windows.
+>sudo vi /etc/systemd/system/buggyamb.service
 
-Running as stand alone application is very easy and actually it is the only way  You do not need to deal with installing and configuring the Nginx or Apache. Even if you want to run  In this scenario the BuggyAmb application will run in Kestrel web server implementation to listen on port 5000 to accept the HTTP requests.
+Once you create the unit file, reload the daemon configurations so this service will be added in the list:
 
+>sudo systemctl daemon-reload
 
-* When you run as stand alone, you will need to manage to start BuggyAmb once it stops / crashes.
-* Hosting on IIS is usually the preferred way for several people in real world scenarios where the OS is Windows so if you want more close environment to real world scenarios you should choose hosting on IIS.
-* IIS (actually the WAS service) will manage the process startups so if BuggyAmb crashes then IIS will start it without you to take action (unless the application is pool is disabled due to Rapid Fail Protection) if you host on IIS.
+Now you are ready to enable the service, start and check if it is running. Enabling a service means that the systemd will be aware of this service so it can start it once the machine is rebooted or the process is crashed. To enable the buggyamb service run this command:
 
-So make your choice, it is all up to you.
+>sudo systemctl enable buggyamb
 
-<h3>Running BuggyAmb as a standalone application (no web server is needed)</h3>
+Enabling a service does not start it so you need to start it now - don't worry you won't need to run this command once again unless you explicitly stop the service:
+
+<code>sudo systemctl start buggyamb</code>
+
+Now check if the service is started:
+
+<code>sudo systemctl status buggyamb</code>
+
+You should see the service is <code>active (running)</code>:
+
+![Linux BuggyAmb service status](Images/linux_systemctl_status_buggyamb.png)
+
