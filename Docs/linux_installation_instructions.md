@@ -173,13 +173,13 @@ server {
     }
 }
 ```
- >Of course the <b>buggyamb</b> hostname resolves to the IP address of the Linux machine on your client machine. You can simply add the <b>buggyamb</b> in the client's hosts file, or, if you have a DNS server you can update it there.
+ >Of course the <b>buggyamb</b> hostname should resolve to the IP address of the Linux machine on your client machine. You can simply add the <b>buggyamb</b> in the client's hosts file, or, if you have a DNS server you can update it there.
  
  Just open the ```/etc/nginx/sites-available/default``` file and add the server block above. After saving the changes, make sure that the Nginx configuration is correct by running ```sudo nginx -t``` command. You should see "configuration test is successfull" message: 
 
 ![Linux BuggyAmb Nginx test](Images/linux_nginx_test.png)
 
->If you are seeing an error then you probably made a mistake when adding the server block in previous step. Roll back from the configuration backup of Nginx and try again (what? you didn't take a backup before configuration change? You didn't take it because I didn't tell you take it? You are so brave, always take a backup before making an important change - luckily this is not a critical change and I bet you can fix it :smiley:).
+>If you are seeing an error then you probably made a mistake when adding the server block in previous step. Roll back from the configuration backup of Nginx and try again (what? you didn't take a backup before configuration change? You didn't take it because I didn't tell you take it? You are so brave, always take a backup before making an important change - luckily this should not be too difficult to fix :smiley:).
 
 Once the Nginx is configured correctly, let the Nginx to read the configuration changes by running ```sudo nginx -s reload``` command.
 
@@ -201,13 +201,18 @@ Now run ```curl buggyamb``` command.  This time we make the request with <b>bugg
 
 >If all working, good. If not working, I recommend you to go through the steps above to solve it. There are really great articles on the Internet, if you cannot solve it, search it in the Internet. If you still cannot find your answer feel free to ask your questions here in the comments.
 
-If everything is working fine, then try to access BuggyAmb from your client machine. If you cannot get the page and get "page cannot be displayed" error, I would recommend you to make sure buggyamb hostname is resolving to the IP address of your Linux machine first. If it is correct then it may be a firewall issue, see the next step.
+If everything is working fine, then try to access BuggyAmb from your client machine. If you cannot get the page and get "page cannot be displayed" error, I would recommend you to make sure buggyamb hostname is resolving to the IP address of your Linux machine first. If it is correct then it may be a local firewall issue, so please see the next step.
 
 <b>Configuring Linux firewall</b>
 
-```iptables``` could be blocking the HTTP requests. Configuring iptables could be an easy task for Linux admins but I found it a bit difficult. Instead I prefer to use <a href="https://firewalld.org/">firewalld</a> which makes it very easy to configure permanent rules. Steps are easy:
+```iptables``` could be blocking the HTTP requests. Configuring iptables could be an easy task for Linux admins but I found it a bit difficult so I prefer to use <a href="https://firewalld.org/">firewalld</a> which makes it very easy to configure the local firewall with permanent rules. Steps are easy:
 
 * Install firewalld: ```sudo apt install firewalld```
-* Add a permenant HTTP rule: ```firewall-cmd --zone=public --permanent --add-service=http```
-* Reload firewall configuration: ```firewall-cmd --reload```
+* Add a permenant HTTP rule: ```sudo firewall-cmd --zone=public --permanent --add-service=http```
+* Reload firewall configuration: ```sudo firewall-cmd --reload```
 
+Now you should be able to access the BuggyAmb hosted on Linux and running behind Nginx:
+
+![Linux browser test](linux_browser_test_success)
+
+Congratulations. You are all done. Now you can start this troubleshooting buggy application.
