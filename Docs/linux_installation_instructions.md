@@ -99,23 +99,6 @@ Environment=ASPNETCORE_ENVIRONMENT=Production
 WantedBy=multi-user.targe
 ```
 
->\[Unit]\
->Description=BuggyAmb ASP.NET Core 3.1\
->\
->\[Service]\
->WorkingDirectory=/var/buggyamb/buggyamb_v1.1\
->ExecStart= /usr/bin/dotnet /var/buggyamb/buggyamb_v1.1/BuggyAmb.dll\
->Restart=always\
->\# Restart service after 10 seconds if the dotnet service crashes:\
->RestartSec=10\
->KillSignal=SIGINT\
->SyslogIdentifier=BuggyAmb\
->User=www-data\
->Environment=ASPNETCORE_ENVIRONMENT=Production\
->\
->\[Install]\
->WantedBy=multi-user.target
-
 Just create <code>buggyamb.service</code> file in <code>/etc/systemd/system</code> directory, copy and paste the lines above in that file. You can use your favorite text editor, such as <code>nano</code> or <code>vi</code>, e.g.:
 
 >sudo vi /etc/systemd/system/buggyamb.service
@@ -168,22 +151,19 @@ After the installation is completed, make sure that the Nginx works correctly:
 
 > If it is not started you can try <code>sudo systemctl start nginx</code> or <code>sudo service nginx start</code>. If you are still having trouble installing and running Nginx, please visit the official Nginx installation page: https://www.nginx.com/resources/wiki/start/topics/tutorials/install/
 
->server {\
->    listen        80;\
->    server_name   buggyamb;\
->    location / {\
->        proxy_pass         http://localhost:5000;\
->        proxy_http_version 1.1;\
->        proxy_set_header   Upgrade $http_upgrade;\
->        proxy_set_header   Connection keep-alive;\
->        proxy_set_header   Host $host;\
->        proxy_cache_bypass $http_upgrade;\
->        proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;\
->        proxy_set_header   X-Forwarded-Proto $scheme;\
->    }\
->}
-
-```javascript
-var s = "JavaScript syntax highlighting";
-alert(s);
+```
+server {
+    listen        80;
+    server_name   buggyamb;
+    location / {
+        proxy_pass         http://localhost:5000;
+        proxy_http_version 1.1;
+        proxy_set_header   Upgrade $http_upgrade;
+        proxy_set_header   Connection keep-alive;
+        proxy_set_header   Host $host;
+        proxy_cache_bypass $http_upgrade;
+        proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header   X-Forwarded-Proto $scheme;
+    }
+}
 ```
