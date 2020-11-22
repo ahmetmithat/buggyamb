@@ -210,7 +210,7 @@ If everything is working fine, then try to access BuggyAmb from your client mach
 ```iptables``` could be blocking the HTTP requests. Configuring iptables could be an easy task for most of the Linux admins but I am not a Linux expert and I found it a bit difficult, so, I prefer to use <a href="https://firewalld.org/">firewalld</a>. It makes it very easy to configure the local firewall with permanent rules. Steps are very easy:
 
 * Install firewalld: ```sudo apt install firewalld```
-* Add a permenant rule to allow incoming HTTP requests: ```sudo firewall-cmd --zone=public --permanent --add-service=http```
+* Add a permenant rule to allow all incoming HTTP requests: ```sudo firewall-cmd --zone=public --permanent --add-service=http```
 * Reload firewall configuration: ```sudo firewall-cmd --reload```
 
 After you configure the local firewall to allow incoming HTTP requests, try once again. Now you should be able to access the BuggyAmb hosted on Linux and running behind Nginx:
