@@ -98,11 +98,7 @@ Here is a sample Unit file that you can use:
 >WantedBy=multi-user.target
 </code>
 
-Just create <code>buggyamb.service</code> file in <code>/etc/systemd/system</code> directory, copy and paste the lines above in that file. You can use your favorite text editor, such as <code>nano</code> or <code>vi</code>:
-
->sudo nano /etc/systemd/system/buggyamb.service
-
-or,
+Just create <code>buggyamb.service</code> file in <code>/etc/systemd/system</code> directory, copy and paste the lines above in that file. You can use your favorite text editor, such as <code>nano</code> or <code>vi</code>, e.g.:
 
 >sudo vi /etc/systemd/system/buggyamb.service
 
@@ -116,13 +112,19 @@ Now you are ready to enable the service, start and check if it is running. Enabl
 
 Enabling a service does not start it so you need to start it now - don't worry you won't need to run this command once again unless you explicitly stop the service:
 
-<code>sudo systemctl start buggyamb</code>
+>sudo systemctl start buggyamb
 
 Now check if the service is started:
 
-<code>sudo systemctl status buggyamb</code>
+>sudo systemctl status buggyamb
 
 You should see the service is <code>active (running)</code>:
 
 ![Linux BuggyAmb service status](Images/linux_systemctl_status_buggyamb.png)
+
+>The process ID is an important information here because you will need that PID when you trobleshoot BuggyAmb application. You can get the same process ID using other tools like <code>top</code> or <code>htop</code> easily.
+
+Now BuggyAmb is ready to restart if it crashes or if the machine is rebooted.
+
+<h2>Getting rid of port 5000: running BuggyAmb behind Nginx</h2>
 
