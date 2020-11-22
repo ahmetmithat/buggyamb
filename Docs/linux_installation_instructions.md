@@ -80,6 +80,25 @@ If you host an ASP.NET Core application on IIS, either in-process or out-process
 
 Here is a sample Unit file that you can use:
 
+```
+[Unit]
+Description=BuggyAmb ASP.NET Core 3.1
+
+[Service]
+WorkingDirectory=/var/buggyamb/buggyamb_v1.1
+ExecStart= /usr/bin/dotnet /var/buggyamb/buggyamb_v1.1/BuggyAmb.dll
+Restart=always
+# Restart service after 10 seconds if the dotnet service crashes:
+RestartSec=10
+KillSignal=SIGINT
+SyslogIdentifier=BuggyAmb
+User=www-data
+Environment=ASPNETCORE_ENVIRONMENT=Production
+
+[Install]
+WantedBy=multi-user.targe
+```
+
 >\[Unit]\
 >Description=BuggyAmb ASP.NET Core 3.1\
 >\
@@ -96,7 +115,6 @@ Here is a sample Unit file that you can use:
 >\
 >\[Install]\
 >WantedBy=multi-user.target
-</code>
 
 Just create <code>buggyamb.service</code> file in <code>/etc/systemd/system</code> directory, copy and paste the lines above in that file. You can use your favorite text editor, such as <code>nano</code> or <code>vi</code>, e.g.:
 
