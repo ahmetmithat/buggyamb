@@ -13,16 +13,18 @@ The main reason for not publishing BuggyAmb as a self-contained application is s
 
 Please check the release information to find out which .NET Core version is required to run that release. The initial release of BuggyAmb is an ASP.NET Core 3.1 application so you will need .NET Core 3.1 runtime or SDK. You can run the following command on a terminal to see which versions are installed on your machine:
 
-> dotnet --info
+```dotnet --info```
 
 If you don't have ASP.NET Core 3.1 runtime or SDK on your machine then you can find the installation instructions for different Linux distributions in this page: https://docs.microsoft.com/en-us/dotnet/core/install/linux
 
 I have installed the .NET Core 3.1 SDK on Ubuntu 18.04 by following the instructions on https://docs.microsoft.com/en-us/dotnet/core/install/linux-ubuntu#1804 and replacing the dotnet-sdk-5.0 with dotnet-sdk-3.1:
 
->sudo apt-get update; \
->  sudo apt-get install -y apt-transport-https && \
->  sudo apt-get update && \
->  sudo apt-get install -y <b>dotnet-sdk-3.1</b>
+```
+sudo apt-get update;
+sudo apt-get install -y apt-transport-https &&
+sudo apt-get update &&
+sudo apt-get install -y <b>dotnet-sdk-3.1</b>
+```
 
 And here is the <code>dotnet --info</code> output:
 
@@ -32,14 +34,16 @@ And here is the <code>dotnet --info</code> output:
 
 Simply you can run the following <code>wget</code> command to download BuggyAmb bits on your Linux machine:
 
->wget https://github.com/ahmetmithat/buggyamb/releases/download/v1.1/buggyamb_v1.1.tar.gz
+```wget https://github.com/ahmetmithat/buggyamb/releases/download/v1.1/buggyamb_v1.1.tar.gz```
 
 Note that the command above downloads the first release of BuggyAmb and actually as of now it is the only release available :smiley:
 
 After the BuggyAmb is downloaded you need to extract the tar.gz file. The file should be downloaded in the current folder you are in when running the <code>wget</code> command and now you need to use <code>tar</code> to extract the file. I chose extracting the all releases under <code>/var/buggyamb</code> directory so I use the following command to extract:
 
->sudo mkdir /var/buggyamb \
->sudo tar -xf buggyamb_v1.1.tar.gz -C /var/buggyamb
+```
+sudo mkdir /var/buggyamb
+sudo tar -xf buggyamb_v1.1.tar.gz -C /var/buggyamb
+```
 
 The <code>buggyamb_v1.1</code> folder should have been created under <code>/var/buggyamb</code>:
 
@@ -54,7 +58,7 @@ You need to run BuggyAmb as a standalone application in Linux, there is no "in-p
 To run BuggyAmb on Linux:
 
 * Change directory to where BuggyAmb is extracted. In my case I change the directory to <code>/var/buggyamb/buggyamb_v1.1</code>
-* And run the following command: <code>dotnet BuggyAmb.dll</code>
+* And run the following command: ```dotnet BuggyAmb.dll```
 
 You should see that the application is listening on port 5000 for HTTP requests:
 
@@ -101,23 +105,23 @@ WantedBy=multi-user.targe
 
 Just create <code>buggyamb.service</code> file in <code>/etc/systemd/system</code> directory, copy and paste the lines above in that file. You can use your favorite text editor, such as <code>nano</code> or <code>vi</code>, e.g.:
 
->sudo vi /etc/systemd/system/buggyamb.service
+```sudo vi /etc/systemd/system/buggyamb.service```
 
 Once you create the unit file, reload the daemon configurations so this service will be added in the list:
 
->sudo systemctl daemon-reload
+```sudo systemctl daemon-reload```
 
 Now you are ready to enable the service, start and check if it is running. Enabling a service means that the systemd will be aware of this service so it can start it once the machine is rebooted or the process is crashed. To enable the buggyamb service run this command:
 
->sudo systemctl enable buggyamb
+```sudo systemctl enable buggyamb```
 
 Enabling a service does not start it so you need to start it now - don't worry you won't need to run this command once again unless you explicitly stop the service:
 
->sudo systemctl start buggyamb
+```sudo systemctl start buggyamb```
 
 Now check if the service is started:
 
->sudo systemctl status buggyamb
+```sudo systemctl status buggyamb```
 
 You should see the service is <code>active (running)</code>:
 
