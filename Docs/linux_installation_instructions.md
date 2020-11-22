@@ -34,4 +34,4 @@ Simply you can run the following <code>wget</code> command to download BuggyAmb 
 
 >wget https://github.com/ahmetmithat/buggyamb/releases/download/v1.0/BuggyAmbV1.0.tar.gz
 
-
+Note that the command above downloads the first release of BuggyAmb and actually as of now it is the only release available :smiley:
